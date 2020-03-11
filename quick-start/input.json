@@ -1,0 +1,9 @@
+{
+    "action":{
+        "operation":"read",
+        "resource":"widgets"
+    },
+    "subject":{
+        "user":"inspector-alice"
+    }
+}

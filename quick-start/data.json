@@ -1,0 +1,24 @@
+{
+    "roles": [
+        {
+            "operation": "read",
+            "resource": "widgets",
+            "name": "widget-reader"
+        },
+        {
+            "operation": "write",
+            "resource": "widgets",
+            "name": "widget-writer"
+        }
+    ],
+    "bindings": [
+        {
+            "user": "inspector-alice",
+            "role": "widget-reader"
+        },
+        {
+            "user": "maker-bob",
+            "role": "widget-writer"
+        }
+    ]
+}
