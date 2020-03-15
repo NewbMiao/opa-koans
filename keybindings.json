@@ -1,0 +1,24 @@
+// For vscode-opa
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "cmd+e",
+        "command": "opa.eval.selection",
+        "when": "editorLangId == rego"
+    },
+    {
+        "key": "shift+cmd+a",
+        "command": "opa.eval.package",
+        "when": "editorLangId == rego"
+    },
+    {
+        "key": "shift+cmd+c",
+        "command": "opa.test.coverage.workspace",
+        "when": "editorLangId == rego"
+    },
+    {
+        "key": "shift+cmd+t",
+        "command": "opa.test.workspace",
+        "when": "editorLangId == rego"
+    }
+]

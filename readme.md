@@ -2,11 +2,11 @@
 
 OPA入门系列
 
-OPA，重新定义规则引擎，国内用的还比较少。
+OPA，重新定义规则引擎，灵活而强大的声明式语言全面支持通用策略定义。
 
 ## 为什么做这个教程
 
-- 做国外项目接触比较多
+- 国外项目接触比较多
 - 底层是Go实现，简洁而优雅
 - 希望给国内规则引擎多一种了解，多一个选择。
 
@@ -71,9 +71,9 @@ mv opa /usr/local/bin/opa
 brew install opa
 ```
 
-## 入门
+## 目录
 
-### 一个RBAC例子
+### [一个RBAC例子](http://blog.newbmiao.com/2020/03/13/opa-quick-start.html)
 
 几行代码实现一个简单的RBAC认证服务: [example_rbac](/quick-start)
 
@@ -82,14 +82,12 @@ cd quick-start
 opa eval -i input.json -d data.json -d example.rego "data.example_rbac"
 ```
 
-### 如何优雅的开发
+### [如何优雅的开发](http://blog.newbmiao.com/2020/03/14/how-to-use-opa-cli-elegantly.html)
 
-### 强大的声明式语法
+### 语法进阶
 
 ### bundle封装
 
 ### 实战
 
-后续会把详细教程通过公众号：newbmiao 分享给大家
-
-文档也将一点点完善。。。
+文档一点点完善中。。。
