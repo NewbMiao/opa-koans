@@ -8,9 +8,10 @@ is_config {
 	is_config_file(x)
 }
 
-# eval_conflict_error: functions must not produce multiple outputs for same inputs
+# function's input/output can be infinite
 getFileName(type, str) = x {
-	type = "posix" # this is needed, without will report error
+	type = "posix" # this is needed, without will report error :
+	# eval_conflict_error: functions must not produce multiple outputs for same inputs
 	str = trim(str)
 	tmp := split(str, "/")
 	x := tmp[minus(count(tmp), 1)]

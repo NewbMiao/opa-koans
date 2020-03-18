@@ -4,14 +4,13 @@ import data.example_func.is_config_file
 import input.files
 
 is_config {
-	files := getFileNames
-	is_config_file(files[_])
+	is_config_file(getFileNames[_])
 }
 
-# eval_conflict_error: functions must not produce multiple outputs for same inputs
+# virtual document's input/output is finite, and is generated document,  can be query, support iteration, will be output
 getFileNames[x] {
 	file := files[_]
-	file.type = "posix" # this is needed, without will report error
+	file.type = "posix"
 	file.path = trim(file.path)
 	tmp := split(file.path, "/")
 	x := tmp[minus(count(tmp), 1)]
@@ -19,7 +18,7 @@ getFileNames[x] {
 
 getFileNames[x] {
 	file := files[_]
-	file.type = "traditional-mac" # this is needed, without will report error
+	file.type = "traditional-mac"
 	file.path = trim(file.path)
 	tmp := split(file.path, ":")
 	x := tmp[minus(count(tmp), 1)]
