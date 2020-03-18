@@ -1,0 +1,20 @@
+{
+    "files": [
+      {
+        "type": "posix",
+        "path": "/Users/newbmiao/Documents/1.yaml"
+      },
+      {
+        "type": "posix",
+        "path": "/Users/newbmiao/Documents/2.yaml"
+      },
+      {
+        "type": "traditional-mac",
+        "path": "Macintosh HD:Users:newbmiao:Documents:3.yml"
+      },
+      {
+        "type": "traditional-mac",
+        "path": "Macintosh HD:Users:newbmiao:Documents:3.json"
+      }
+    ]
+  }
