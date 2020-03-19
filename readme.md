@@ -86,6 +86,8 @@ opa eval -i input.json -d data.json -d example.rego "data.example_rbac"
 
 ### 语法进阶
 
+- [函数和虚拟文档](http://blog.newbmiao.com/2020/03/18/opa-func-and-virtual-doc.html)
+
 ### bundle封装
 
 ### 实战

@@ -8,9 +8,13 @@ is_config {
 	is_config_file(x)
 }
 
+# or
+# is_config_file2(x)
+
 # function's input/output can be infinite
 getFileName(type, str) = x {
 	type = "posix" # this is needed, without will report error :
+
 	# eval_conflict_error: functions must not produce multiple outputs for same inputs
 	str = trim(str)
 	tmp := split(str, "/")
@@ -46,5 +50,17 @@ is_config_file(str) {
 }
 
 is_config_file(str) {
+	contains(str, ".json")
+}
+
+is_config_file2(str) {
+	contains(str, ".yaml")
+}
+
+else {
+	contains(str, ".yml")
+}
+
+else {
 	contains(str, ".json")
 }
