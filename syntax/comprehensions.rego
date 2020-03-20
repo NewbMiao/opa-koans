@@ -3,6 +3,7 @@ package example_comprehensions
 import input.files
 
 # object comprehensions
+# { <key>: <term> | <body> }
 group_files_by_type := {type: paths |
 	file := files[_]
 	type := file.type
@@ -14,6 +15,7 @@ group_files_by_type := {type: paths |
 }
 
 # object comprehensions
+# { <key>: <term> | <body> }
 group_files_by_file_extension := {ext: paths |
 	# set: ["yaml", "yml", "json"]
 	extSets := {e | e = regex.find_all_string_submatch_n(".*\\.(.*)$", files[_].path, -1)[0][1]}
@@ -27,6 +29,7 @@ group_files_by_file_extension := {ext: paths |
 }
 
 # set comprehensions
+# { <term> | <body> }
 convert_all_to_posix_path_sets := {path |
 	path1 := {p |
 		file := files[_]
@@ -44,6 +47,7 @@ convert_all_to_posix_path_sets := {path |
 }
 
 # array comprehensions
+# [ <term> | <body> ]
 convert_all_to_posix_path_array := [path |
 	path1 := [p |
 		file := files[_]
