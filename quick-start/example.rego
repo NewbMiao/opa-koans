@@ -4,6 +4,8 @@ default allow = false
 
 # allow will be true when user has role and role has permission
 allow {
+	# opa eval -f pretty -d quick-start -i quick-start/input.json "data.example_rbac.allow" --explain=notes
+	# trace(role_name)
 	user_has_role[role_name]
 	role_has_permission[role_name]
 }

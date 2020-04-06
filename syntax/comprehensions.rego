@@ -18,7 +18,9 @@ group_files_by_type := {type: paths |
 # { <key>: <term> | <body> }
 group_files_by_file_extension := {ext: paths |
 	# set: ["yaml", "yml", "json"]
-	extSets := {e | e = regex.find_all_string_submatch_n(".*\\.(.*)$", files[_].path, -1)[0][1]}
+	extSets := {e |
+		e = regex.find_all_string_submatch_n(".*\\.(.*)$", files[_].path, -1)[0][1]
+	}
 
 	ext := extSets[_]
 	paths := [path |
@@ -43,7 +45,8 @@ convert_all_to_posix_path_sets := {path |
 		p := replace(replace(file.path, "Macintosh HD", ""), ":", "/")
 	}
 
-	path := path1 | path2
+	paths := path1 | path2
+	path = paths[_]
 }
 
 # array comprehensions
@@ -61,5 +64,6 @@ convert_all_to_posix_path_array := [path |
 		p := replace(replace(file.path, "Macintosh HD", ""), ":", "/")
 	]
 
-	path := array.concat(path1, path2)
+	paths := array.concat(path1, path2)
+	path = paths[_]
 ]
