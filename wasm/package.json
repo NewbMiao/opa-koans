@@ -1,0 +1,11 @@
+{
+  "name": "example-app",
+  "version": "1.0.0",
+  "description": "example app",
+  "main": "app.js",
+  "scripts": {},
+  "dependencies": {
+    "@open-policy-agent/opa-wasm": "^1.0.0"
+  },
+  "license": "Apache-2.0"
+}
