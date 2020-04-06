@@ -1,0 +1,30 @@
+services:
+    authz:
+      url: http://example.com/rbac/v1
+      credentials:
+        bearer:
+          token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"
+  
+labels:
+    app: myapp
+    region: west
+    environment: production
+  
+bundles:
+    authz:
+        service: authz
+        resource: bundle/rbac.tar.gz
+        polling:
+        min_delay_seconds: 60
+        max_delay_seconds: 120
+  
+decision_logs:
+    service: authz
+    reporting:
+        min_delay_seconds: 300
+        max_delay_seconds: 600
+  
+status:
+    service: authz
+  
+default_decision: /authz/allow

@@ -1,0 +1,10 @@
+[
+    {
+        "user": "inspector-alice",
+        "role": "widget-reader"
+    },
+    {
+        "user": "maker-bob",
+        "role": "widget-writer"
+    }
+]

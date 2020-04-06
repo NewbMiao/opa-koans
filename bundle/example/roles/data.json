@@ -1,0 +1,12 @@
+[
+    {
+        "operation": "read",
+        "resource": "widgets",
+        "name": "widget-reader"
+    },
+    {
+        "operation": "write",
+        "resource": "widgets",
+        "name": "widget-writer"
+    }
+]

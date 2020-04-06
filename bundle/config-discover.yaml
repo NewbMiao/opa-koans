@@ -1,0 +1,12 @@
+services:
+    - name: example_rbac
+      url: https://example.com/rbac/v1
+      credentials:
+        bearer:
+          token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"
+  
+  discovery:
+    name: /example/discovery
+  
+  labels:
+    region: "UK"
