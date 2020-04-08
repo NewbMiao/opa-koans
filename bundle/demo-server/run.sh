@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 workspace=$(cd $(dirname $0) && pwd -P)
 
@@ -8,12 +8,12 @@ workspace=$(cd $(dirname $0) && pwd -P)
 #     prom/prometheus
 
 {
-    cd $workspace/example
+    cd $workspace/../example
     find . -type f ! -name "*.tar.gz" | xargs tar -czf rbac.tar.gz
-    mv rbac.tar.gz ../demo-server
+    mv rbac.tar.gz $workspace
     echo "example_rbac files bundled!"
-    cd $workspace/demo-server
-    echo "start demo-server at http://localhost:8888/"
+    cd $workspace
+    echo "start demo-server at http://0.0.0.0:8888/ (inside docker: demo-server:8888)"
 
     go run main.go
 }

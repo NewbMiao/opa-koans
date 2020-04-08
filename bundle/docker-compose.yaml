@@ -1,0 +1,49 @@
+version: '3.6'
+
+networks:
+    monitor:
+        driver: bridge
+
+services:
+    opa-server:
+        image: openpolicyagent/opa:latest
+        container_name: opa
+        # restart: always
+        volumes:
+            - ./config-bundle.yaml:/code/config-bundle.yaml
+        ports:
+            - "8181:8181"
+        networks:
+            - monitor
+        command: run --server --config-file /code/config-bundle.yaml
+    demo-server:
+        image: golang:1.14-alpine
+        container_name: golang
+        restart: always
+        volumes:
+            - ./demo-server:/code
+        ports:
+            - "8888:8888"
+        networks:
+            - monitor
+        entrypoint: /code/run.sh
+    prometheus:
+        image: prom/prometheus
+        container_name: prometheus
+        hostname: prometheus
+        restart: always
+        volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        ports:
+            - "9090:9090"
+        networks:
+            - monitor
+    grafana:
+        image: grafana/grafana
+        container_name: grafana
+        hostname: grafana
+        restart: always
+        ports:
+            - "3000:3000"
+        networks:
+            - monitor

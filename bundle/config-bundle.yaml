@@ -1,6 +1,6 @@
 services:
     authz:
-      url: http://localhost:8888/
+      url: http://demo-server:8888/
       credentials:
         bearer:
           token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"

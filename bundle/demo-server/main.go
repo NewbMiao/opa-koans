@@ -24,7 +24,7 @@ func main() {
 	router.HandleFunc("/status", echo)
 	srv := &http.Server{
 		Handler: router,
-		Addr:    "localhost:8888",
+		Addr:    "0.0.0.0:8888",
 	}
 	log.Fatal(srv.ListenAndServe())
 }
