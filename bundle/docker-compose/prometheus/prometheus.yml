@@ -11,10 +11,15 @@ rule_files:
   - ./rules/*.yml
 
 scrape_configs:
-  - job_name: "opa"
+  - job_name: "opa-bundle"
     metrics_path: "/metrics"
     static_configs:
-    - targets: ["opa-server:8181"]
+    - targets: ["opa-bundle:8181"]
+
+  - job_name: "opa-discovery"
+    metrics_path: "/metrics"
+    static_configs:
+    - targets: ["opa-discovery:8182"]
 
   - job_name: 'prometheus'
     static_configs:

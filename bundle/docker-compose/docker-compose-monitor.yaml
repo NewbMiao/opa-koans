@@ -5,11 +5,12 @@ networks:
         driver: bridge
 
 services:
-    opa-server:
+    opa-bundle: # bundle
         depends_on: 
             - demo-server
         image: openpolicyagent/opa:latest
-        container_name: opa
+        container_name: opa-bundle
+        hostname: opa-bundle
         restart: always
         volumes:
             - ./opa/config-bundle.yaml:/code/config-bundle.yaml
@@ -17,7 +18,21 @@ services:
             - "8181:8181"
         networks:
             - monitor
-        command: run --server --config-file /code/config-bundle.yaml
+        command: run --server -a :8181 --config-file /code/config-bundle.yaml
+    opa-discovery:
+        depends_on: 
+            - demo-server
+        image: openpolicyagent/opa:latest
+        container_name: opa-discovery
+        hostname: opa-discovery
+        restart: always
+        volumes:
+            - ./opa/config-discovery.yaml:/code/config-discovery.yaml
+        ports:
+            - "8182:8182"
+        networks:
+            - monitor
+        command: run --server -a :8182 --config-file /code/config-discovery.yaml
     demo-server:
         image: golang:1.14-alpine
         container_name: golang
@@ -30,7 +45,7 @@ services:
             - monitor
         working_dir: /code
         command: go run main.go
-    prometheus: # collecting opa-server and other metrics
+    prometheus: # collecting opa-bundle and other metrics
         image: prom/prometheus
         container_name: prometheus
         hostname: prometheus

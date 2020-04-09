@@ -1,0 +1,15 @@
+services:
+  - name: example_discovery
+    url: http://demo-server:8888/
+    credentials:
+      bearer:
+        token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"
+  
+discovery:
+  name: example
+  resource: bundle/discovery.tar.gz
+  decision: example/discovery
+  service: example_discovery
+
+labels:
+  region: "UK" # to fetch different bundle

@@ -1,29 +1,29 @@
 services:
-    authz:
-      url: http://demo-server:8888/
-      credentials:
-        bearer:
-          token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"
+  - name: example_bundle
+    url: http://demo-server:8888/
+    credentials:
+      bearer:
+        token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"
   
 labels:
-    app: myapp
-    environment: production
+  app: myapp
+  environment: production
   
 bundles:
-    authz:
-        service: authz
-        resource: bundle/rbac.tar.gz
-        polling:
-        min_delay_seconds: 60
-        max_delay_seconds: 120
+  authz:
+    service: example_bundle
+    resource: bundle/rbac.tar.gz
+    polling:
+      min_delay_seconds: 60
+      max_delay_seconds: 120
   
 decision_logs:
-    service: authz
-    reporting:
-        min_delay_seconds: 300
-        max_delay_seconds: 600
+  service: example_bundle
+  reporting:
+    min_delay_seconds: 300
+    max_delay_seconds: 600
   
 status:
-    service: authz
+  service: example_bundle
   
-default_decision: /authz/allow
+default_decision: example_rbac/allow
