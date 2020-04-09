@@ -47,7 +47,7 @@ func handleBundleFile(w http.ResponseWriter, r *http.Request) {
 			log.Println("Read File Err:", err.Error())
 		} else {
 			log.Println("Send File:", des)
-			w.Write(fileData)
+			_, _ = w.Write(fileData)
 		}
 	}
 }

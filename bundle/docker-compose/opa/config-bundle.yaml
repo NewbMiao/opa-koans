@@ -1,6 +1,6 @@
 services:
-    example_rbac:
-      url: http://media.newbmiao.com/opa/
+    authz:
+      url: http://demo-server:8888/
       credentials:
         bearer:
           token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"
@@ -11,16 +11,19 @@ labels:
   
 bundles:
     authz:
-        service: example_rbac
+        service: authz
         resource: bundle/rbac.tar.gz
         polling:
         min_delay_seconds: 60
         max_delay_seconds: 120
   
 decision_logs:
-    console: true
+    service: authz
+    reporting:
+        min_delay_seconds: 300
+        max_delay_seconds: 600
   
 status:
-    console: true
+    service: authz
   
-default_decision: /example_rbac/allow
+default_decision: /authz/allow

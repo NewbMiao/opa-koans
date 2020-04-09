@@ -8,10 +8,6 @@ workspace=$(cd $(dirname $0) && pwd -P)
 #     prom/prometheus
 
 {
-    cd $workspace/../example
-    find . -type f ! -name "*.tar.gz" | xargs tar -czf rbac.tar.gz
-    mv rbac.tar.gz $workspace
-    echo "example_rbac files bundled!"
     cd $workspace
     echo "start demo-server at http://0.0.0.0:8888/ (inside docker: demo-server:8888)"
 

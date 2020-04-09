@@ -7,7 +7,6 @@ services:
   
 labels:
     app: myapp
-    region: west
     environment: production
   
 bundles:
@@ -19,12 +18,9 @@ bundles:
         max_delay_seconds: 120
   
 decision_logs:
-    service: authz
-    reporting:
-        min_delay_seconds: 300
-        max_delay_seconds: 600
+    console: true
   
 status:
-    service: authz
+    console: true
   
-default_decision: /authz/allow
+default_decision: /example_rbac/allow
