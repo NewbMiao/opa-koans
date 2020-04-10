@@ -15,16 +15,20 @@ bundles:
     service: example_bundle
     resource: bundle/rbac.tar.gz
     polling:
-      min_delay_seconds: 60
-      max_delay_seconds: 120
+      # do not polling bundle too frequently
+      min_delay_seconds: 300
+      max_delay_seconds: 600
 
 decision_logs:
   service: example_bundle
+  partition_name: bundle
   reporting:
-    min_delay_seconds: 300
-    max_delay_seconds: 600
+    # upload log gzip more frequently
+    min_delay_seconds: 30
+    max_delay_seconds: 60
 
 status:
   service: example_bundle
+  partition_name: bundle
 
-default_decision: example_rbac/allow
+default_decision: rbac/allow

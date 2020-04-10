@@ -1,28 +1,20 @@
-# This is a basic workflow to help you get started with Actions
-
 name: opa-koans
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Yaml Lint
-      run: docker run --rm  -v $(pwd):/workdir giantswarm/yamllint -d "{extends: relaxed, rules: {line-length: {max: 120}}}" $(find . -type f -name '*.yaml' -or -name '*.yml')
-    - name: Rego Lint
-      run: docker run --rm -v $(pwd):/code -w /code  openpolicyagent/opa:latest fmt -l $(find . -type f -name '*.rego' ! -path '*/node_modules/*')
-    - name: Rego Test
-      run: docker run --rm -v $(pwd):/code -w /code  openpolicyagent/opa:latest test -c --threshold 100  quick-start 
-    - name: Bundle Verify
-      run:|
-        sh bundle/start.sh start
-        sh bundle/start.sh opa-ping|grep true
-        sh bundle/start.sh stop
+      - uses: actions/checkout@v2
+      - name: Yaml Lint
+        run: sh scripts/yamlLint.sh
+      - name: Rego Lint
+        run: sh scripts/regoLint.sh
+      - name: Rego Test
+        run: sh scripts/regoTest.sh
+      - name: Bundle Verify
+        run: sh scripts/bundleVerify.sh
