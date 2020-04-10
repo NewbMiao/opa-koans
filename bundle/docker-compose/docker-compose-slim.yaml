@@ -1,0 +1,59 @@
+version: "3.6"
+
+# The slim version of opa bundle server monitor
+networks:
+    monitor:
+        driver: bridge
+
+services:
+    opa-bundle: # bundle
+        depends_on:
+            - demo-server
+        image: openpolicyagent/opa:latest
+        container_name: opa-bundle
+        hostname: opa-bundle
+        restart: always
+        volumes:
+            - ./opa/config-bundle.yaml:/code/config-bundle.yaml
+        ports:
+            - "8181:8181"
+        networks:
+            - monitor
+        command: run -s -a :8181 -c /code/config-bundle.yaml
+    opa-discovery:
+        depends_on:
+            - demo-server
+        image: openpolicyagent/opa:latest
+        container_name: opa-discovery
+        hostname: opa-discovery
+        restart: always
+        volumes:
+            - ./opa/config-discovery.yaml:/code/config-discovery.yaml
+        ports:
+            - "8182:8182"
+        networks:
+            - monitor
+        command: run -s -a :8182 -c /code/config-discovery.yaml
+    demo-server:
+        image: golang:1.14.2-alpine
+        container_name: golang
+        restart: always
+        volumes:
+            - ./demo-server:/code
+        ports:
+            - "8888:8888"
+        networks:
+            - monitor
+        working_dir: /code
+        command: go run main.go
+    prometheus: # collecting opa-bundle and other metrics
+        image: prom/prometheus
+        container_name: prometheus
+        hostname: prometheus
+        restart: always
+        volumes:
+            - ./prometheus/prometheus-slim.yml:/etc/prometheus/prometheus.yml
+        ports:
+            - "9090:9090"
+        networks:
+            - monitor

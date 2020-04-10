@@ -2,7 +2,7 @@
 
 workspace=$(cd $(dirname $0) && pwd -P)
 
-start() {
+bundle() {
   # bundle
   cd $workspace/example
   find . -type f ! -name "*.tar.gz" | xargs tar -czf rbac.tar.gz
@@ -14,29 +14,36 @@ start() {
   find . -type f ! -name "*.tar.gz" | xargs tar -czf discovery.tar.gz
   mv discovery.tar.gz ../docker-compose/demo-server
   echo "discovery files bundled!"
-
-  cd $workspace/docker-compose
-  exec docker-compose -f docker-compose-monitor.yaml up -d
 }
 
 action="$1"
 {
-
   case $action in
   "start")
-    start
+    bundle
+    cd $workspace/docker-compose
+    docker-compose -f docker-compose-slim.yaml up -d
     ;;
   "stop")
     cd $workspace/docker-compose
-    exec docker-compose -f docker-compose-monitor.yaml stop
+    docker-compose -f docker-compose-slim.yaml stop
+    ;;
+  "start-advance")
+    bundle
+    cd $workspace/docker-compose
+    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d
+    ;;
+  "stop-advance")
+    cd $workspace/docker-compose
+    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml stop
     ;;
   "logs")
-    [ "$2" == "" ] && echo "Please specify one below container name to see log:\n $(docker ps -a -f network=docker-compose_monitor)" && exit 1
-    cId=$(docker ps -a | grep $2 | cut -d ' ' -f1)
+    [ "$2" == "" ] && echo "Please specify one below container name to see log:\n $(docker ps -f network=docker-compose_monitor)" && exit 1
+    cId=$(docker ps | grep $2 | cut -d ' ' -f1|head -n1)
     [ "$cId" != "" ] && docker logs -ft $cId
     ;;
   *)
-    echo "Usage:\n\tsupport cmd is: start, stop, logs <container name>"
+    echo "Usage:\n\tsupport cmd is: start, stop, start-advance, stop-advance, logs <container name>"
     ;;
   esac
 }
