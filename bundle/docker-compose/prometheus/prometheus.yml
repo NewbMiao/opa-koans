@@ -4,9 +4,9 @@ global:
 
 alerting:
   alertmanagers:
-  - static_configs:
-    - targets: ['alertmanager:9093']
-  
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+
 rule_files:
   - ./rules/*.yml
 
@@ -14,22 +14,22 @@ scrape_configs:
   - job_name: "opa-bundle"
     metrics_path: "/metrics"
     static_configs:
-    - targets: ["opa-bundle:8181"]
+      - targets: ["opa-bundle:8181"]
 
   - job_name: "opa-discovery"
     metrics_path: "/metrics"
     static_configs:
-    - targets: ["opa-discovery:8182"]
+      - targets: ["opa-discovery:8182"]
 
-  - job_name: 'prometheus'
+  - job_name: "prometheus"
     static_configs:
-    - targets: ['prometheus:9090']
-  
-  - job_name: 'cadvisor'
-    static_configs:
-    - targets: ['cadvisor:8080']
+      - targets: ["prometheus:9090"]
 
-  - job_name: 'node-exporter'
+  - job_name: "cadvisor"
+    static_configs:
+      - targets: ["cadvisor:8080"]
+
+  - job_name: "node-exporter"
     scrape_interval: 8s
     static_configs:
-    - targets: ['node-exporter:9100']
+      - targets: ["node-exporter:9100"]

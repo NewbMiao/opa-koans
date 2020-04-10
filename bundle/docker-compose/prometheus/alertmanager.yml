@@ -1,18 +1,18 @@
 global:
-  smtp_smarthost: 'smtp.163.com:25'
-  smtp_from: 'newbmiao@163.com'
-  smtp_auth_username: 'newbmiao'
-  smtp_auth_password: 'password'
+  smtp_smarthost: "smtp.163.com:25"
+  smtp_from: "newbmiao@163.com"
+  smtp_auth_username: "newbmiao"
+  smtp_auth_password: "password"
   smtp_require_tls: false
 
 route:
-  group_by: ['alertname']
+  group_by: ["alertname"]
   group_wait: 10s
   group_interval: 10s
   repeat_interval: 10m
   receiver: live-monitoring
 
 receivers:
-- name: 'live-monitoring'
-  email_configs:
-  - to: 'newbmiao@qq.com'
+  - name: "live-monitoring"
+    email_configs:
+      - to: "newbmiao@qq.com"

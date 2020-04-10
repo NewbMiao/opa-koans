@@ -4,11 +4,11 @@ services:
     credentials:
       bearer:
         token: "bGFza2RqZmxha3NkamZsa2Fqc2Rsa2ZqYWtsc2RqZmtramRmYWxkc2tm"
-  
+
 labels:
   app: myapp
   environment: production
-  
+
 bundles:
   authz:
     service: example_bundle
@@ -16,14 +16,14 @@ bundles:
     polling:
       min_delay_seconds: 60
       max_delay_seconds: 120
-  
+
 decision_logs:
   service: example_bundle
   reporting:
     min_delay_seconds: 300
     max_delay_seconds: 600
-  
+
 status:
   service: example_bundle
-  
+
 default_decision: example_rbac/allow

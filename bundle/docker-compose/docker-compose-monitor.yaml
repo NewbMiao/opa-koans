@@ -1,4 +1,4 @@
-version: '3.6'
+version: "3.6"
 
 networks:
     monitor:
@@ -6,7 +6,7 @@ networks:
 
 services:
     opa-bundle: # bundle
-        depends_on: 
+        depends_on:
             - demo-server
         image: openpolicyagent/opa:latest
         container_name: opa-bundle
@@ -20,7 +20,7 @@ services:
             - monitor
         command: run --server -a :8181 --config-file /code/config-bundle.yaml
     opa-discovery:
-        depends_on: 
+        depends_on:
             - demo-server
         image: openpolicyagent/opa:latest
         container_name: opa-discovery
@@ -58,7 +58,7 @@ services:
         networks:
             - monitor
     grafana: # GUI of prometheus
-        depends_on: 
+        depends_on:
             - prometheus
         image: grafana/grafana
         container_name: grafana
@@ -105,4 +105,3 @@ services:
             - "9093:9093"
         networks:
             - monitor
-        
