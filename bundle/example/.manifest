@@ -1,4 +1,4 @@
 {
   "revision" : "9f160bcd446bf50b1b17b570c322198a68d8e106",
-  "roots": ["roles", "bindings","example_rbac"]
+  "roots": ["roles", "bindings","rbac"]
 }

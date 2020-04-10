@@ -1,3 +1,4 @@
+---
 version: "3.6"
 
 # The slim version of opa bundle server monitor
@@ -6,7 +7,7 @@ networks:
         driver: bridge
 
 services:
-    opa-bundle: # bundle
+    opa-bundle:
         depends_on:
             - demo-server
         image: openpolicyagent/opa:latest
@@ -46,7 +47,8 @@ services:
             - monitor
         working_dir: /code
         command: go run main.go
-    prometheus: # collecting opa-bundle and other metrics
+    # collecting opa-bundle and other metrics
+    prometheus:
         image: prom/prometheus
         container_name: prometheus
         hostname: prometheus

@@ -1,3 +1,4 @@
+---
 global:
   smtp_smarthost: "smtp.163.com:25"
   smtp_from: "newbmiao@163.com"

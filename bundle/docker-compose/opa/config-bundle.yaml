@@ -1,3 +1,4 @@
+---
 services:
   - name: example_bundle
     url: http://demo-server:8888/

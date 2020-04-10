@@ -1,12 +1,15 @@
+---
 version: "3.6"
 
 # Should combined with docker-compose-slim.yaml
 services:
-    prometheus: # collecting opa-bundle and other metrics
+    # collecting opa-bundle and other metrics
+    prometheus:
         volumes:
             - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
             - ./prometheus/rules/:/etc/prometheus/rules/
-    grafana: # GUI of prometheus
+    # dashboard of metrics
+    grafana:
         depends_on:
             - prometheus
         image: grafana/grafana
@@ -19,7 +22,8 @@ services:
             - monitor
 
     # some addition config
-    node-exporter: # collecting host hardware and operating system data
+    # collecting host hardware and operating system data
+    node-exporter:
         image: quay.io/prometheus/node-exporter
         container_name: node-exporter
         hostname: node-exporter
@@ -28,12 +32,14 @@ services:
             - "9100:9100"
         networks:
             - monitor
-    cadvisor: # collecting container data
+    # collecting container data
+    cadvisor:
         image: google/cadvisor:latest
         container_name: cadvisor
         hostname: cadvisor
         restart: always
-        privileged: true #https://github.com/google/cadvisor/issues/2150
+        # https://github.com/google/cadvisor/issues/2150
+        privileged: true
         volumes:
             - /:/rootfs:ro
             - /var/run:/var/run:rw
@@ -43,7 +49,8 @@ services:
             - "8080:8080"
         networks:
             - monitor
-    alertmanager: # Responsible for the alarm
+    # Responsible for the alarm
+    alertmanager:
         image: prom/alertmanager
         container_name: alertmanager
         hostname: alertmanager

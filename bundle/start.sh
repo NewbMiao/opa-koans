@@ -39,8 +39,11 @@ action="$1"
     ;;
   "logs")
     [ "$2" == "" ] && echo "Please specify one below container name to see log:\n $(docker ps -f network=docker-compose_monitor)" && exit 1
-    cId=$(docker ps | grep $2 | cut -d ' ' -f1|head -n1)
+    cId=$(docker ps | grep $2 | cut -d ' ' -f1 | head -n1)
     [ "$cId" != "" ] && docker logs -ft $cId
+    ;;
+  "opa-ping")
+    curl -s 0.0.0.0:8181/v1/data/rbac/allow -d "{\"input\": $(cat $workspace/../quick-start/input.json)}"
     ;;
   *)
     echo "Usage:\n\tsupport cmd is: start, stop, start-advance, stop-advance, logs <container name>"
