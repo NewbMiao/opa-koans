@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
-workspace=$(cd $(dirname $0) && pwd -P)
+workspace=$(cd "$(dirname "$0")" && pwd -P)
 {
-    cd $workspace/../
+    cd "$workspace"/../ || exit
     echo "Rego Linting"
-    unfmts=$(docker run --rm -v $(pwd):/code -w /code openpolicyagent/opa:latest fmt -l $(find . -type f -name '*.rego' ! -path '*/node_modules/*'))
+    # shellcheck disable=SC2046
+    unfmts=$(docker run --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest fmt -l $(find . -type f -name '*.rego' ! -path '*/node_modules/*'))
     if [ "$unfmts" != "" ]; then
-        echo "Found unforamt rego files:\n$unfmts"
+        echo "Found unforamt rego files:"
+        echo "$unfmts"
         exit 1
     fi
 }
+# fix fmt issue: opa fmt -w .

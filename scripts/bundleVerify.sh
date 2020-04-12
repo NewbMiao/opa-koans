@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-
-workspace=$(cd $(dirname $0) && pwd -P)
+workspace=$(cd "$(dirname "$0")" && pwd -P)
 
 opa_verify() {
-    verified=$(sh start.sh opa-ping | grep -c "true")
-    if [ "$verified" == "2" ]; then
+    res=$(sh start.sh opa-ping 5)
+    echo "Opa ping responses: $res"
+    verified=$(echo "$res" | grep -c "true")
+    if [ "$verified" = "2" ]; then
         echo "opa-bundle and opa-discovery verified!"
     else
         echo "opa-bundle and opa-discovery Not verified!"
@@ -12,7 +13,7 @@ opa_verify() {
     fi
 }
 {
-    cd $workspace/../bundle
+    cd "$workspace"/../bundle || exit
     echo "Verify slim version of bundle server monitor..."
     sh start.sh start
     opa_verify

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-workspace=$(cd $(dirname $0) && pwd -P)
+workspace=$(cd "$(dirname "$0")" && pwd -P)
 {
-    cd $workspace/../
+    cd "$workspace"/../ || exit
     echo "Rego Testing"
-    docker run --rm -v $(pwd):/code -w /code openpolicyagent/opa:latest test -c --threshold 100 quick-start
+    docker run --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest test -c --threshold 100 quick-start
 }

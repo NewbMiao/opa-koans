@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Shell Lint
+        run: sh scripts/shellLint.sh
       - name: Yaml Lint
         run: sh scripts/yamlLint.sh
       - name: Rego Lint

@@ -43,6 +43,8 @@ services:
             - ./demo-server:/code
         ports:
             - "8888:8888"
+        environment:
+            - GOPROXY=https://goproxy.cn,direct
         networks:
             - monitor
         working_dir: /code

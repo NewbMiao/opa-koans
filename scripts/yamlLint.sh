@@ -1,6 +1,8 @@
-workspace=$(cd $(dirname $0) && pwd -P)
+#!/usr/bin/env bash
+workspace=$(cd "$(dirname "$0")" && pwd -P)
 {
-    cd $workspace/../
+    cd "$workspace"/../ || exit
     echo "Yaml Linting"
-    docker run --rm -v $(pwd):/workdir giantswarm/yamllint -d "{extends: relaxed, rules: {line-length: {max: 120}}}" $(find . -type f -name '*.yaml' -or -name '*.yml' ! -path '*/.github/*')
+    # shellcheck disable=SC2046
+    docker run --rm -v "$(pwd)":/workdir giantswarm/yamllint -d "{extends: relaxed, rules: {line-length: {max: 120}}}" $(find . -type f -name '*.yaml' -or -name '*.yml' ! -path '*/.github/*')
 }
