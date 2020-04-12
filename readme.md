@@ -1,5 +1,7 @@
 # opa-koans
 
+![opa-koans](https://github.com/NewbMiao/opa-koans/workflows/opa-koans/badge.svg?branch=master)
+
 OPA入门系列
 
 OPA，重新定义规则引擎，灵活而强大的声明式语言全面支持通用策略定义。
@@ -8,7 +10,7 @@ OPA，重新定义规则引擎，灵活而强大的声明式语言全面支持�
 
 - 国外项目接触比较多
 - 底层是Go实现，简洁而优雅
-- 希望给国内规则引擎多一种了解，多一个选择。
+- 希望给国内策略引擎多一种了解，多一个选择。
 
 ## 什么是OPA
 

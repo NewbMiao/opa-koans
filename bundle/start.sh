@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
-
+#!/usr/bin/env bash
+set -eu
 workspace=$(cd "$(dirname "$0")" && pwd -P)
 listContainer="docker ps -f network=docker-compose_monitor"
 dockerComposeDir="$workspace/docker-compose"
@@ -25,7 +25,7 @@ action="$1"
   "start")
     bundle
     cd "$dockerComposeDir" || exit
-    docker-compose -f docker-compose-slim.yaml up -d
+    docker-compose -f docker-compose-slim.yaml up -d # --build
     ;;
   "stop")
     cd "$dockerComposeDir" || exit
@@ -34,7 +34,7 @@ action="$1"
   "start-advance")
     bundle
     cd "$dockerComposeDir" || exit
-    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d
+    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d # --build
     ;;
   "stop-advance")
     cd "$dockerComposeDir" || exit
@@ -53,10 +53,16 @@ action="$1"
     secs="${2:-1}"
     echo "Will ping opa-bundle after ${secs}s ..."
     sleep "$secs"
-    input="{\"input\": $(cat "$workspace"/../quick-start/input.json)}"
-    curl -s 0.0.0.0:8181/v1/data/rbac/allow -d "$input"
+    input=$(cat "$workspace/../quick-start/input.json")
+    inputWrap="{\"input\": $input}"
+    # go lib opa
+    curl -s 0.0.0.0:8888/auth -d "$input"
     echo
-    curl -s 0.0.0.0:8182/v1/data/rbac/allow -d "$input"
+    # opa bundle
+    curl -s 0.0.0.0:8181/v1/data/rbac/allow -d "$inputWrap"
+    echo
+    # opa discovery
+    curl -s 0.0.0.0:8182/v1/data/rbac/allow -d "$inputWrap"
     ;;
   "clean")
     echo "Will clean these container:"

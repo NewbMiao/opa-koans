@@ -2,3 +2,4 @@ node_modules
 *.txt
 repl/
 *.tar.gz
+demo-app

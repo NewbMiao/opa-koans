@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
+set -eu
 workspace=$(cd "$(dirname "$0")" && pwd -P)
 
 opa_verify() {
-    res=$(sh start.sh opa-ping 5)
+    res=$(sh start.sh opa-ping 10)
     echo "Opa ping responses: $res"
     verified=$(echo "$res" | grep -c "true")
-    if [ "$verified" = "2" ]; then
-        echo "opa-bundle and opa-discovery verified!"
+    if [ "$verified" = "3" ]; then
+        echo "demo-server, opa-bundle and opa-discovery verified!"
     else
-        echo "opa-bundle and opa-discovery Not verified!"
+        echo "demo-server, opa-bundle and opa-discovery Not verified!"
         exit 1
     fi
 }

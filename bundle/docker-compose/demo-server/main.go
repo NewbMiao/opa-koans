@@ -45,7 +45,7 @@ func echo(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	fmt.Fprintf(w, "OK\n")
+	fmt.Fprint(w, "OK\n")
 }
 
 func main() {
@@ -53,6 +53,7 @@ func main() {
 	router.HandleFunc("/bundle/{file}", handleBundleFile)
 	router.HandleFunc("/logs/{partition}", echo)
 	router.HandleFunc("/status/{partition}", echo)
+	router.HandleFunc("/auth", opaEval)
 	srv := &http.Server{
 		Handler: router,
 		Addr:    "0.0.0.0:8888",

@@ -36,19 +36,13 @@ services:
             - monitor
         command: run -s -a :8182 -c /code/config-discovery.yaml
     demo-server:
-        image: golang:1.14.2-alpine
+        build: ./demo-server/
         container_name: golang
         restart: always
-        volumes:
-            - ./demo-server:/code
         ports:
             - "8888:8888"
-        environment:
-            - GOPROXY=https://goproxy.cn,direct
         networks:
             - monitor
-        working_dir: /code
-        command: go run main.go
     # collecting opa-bundle and other metrics
     prometheus:
         image: prom/prometheus

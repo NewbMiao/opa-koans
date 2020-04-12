@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -eu
 workspace=$(cd "$(dirname "$0")" && pwd -P)
 {
     cd "$workspace" || exit
