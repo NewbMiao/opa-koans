@@ -15,9 +15,9 @@ bundles:
     service: example_bundle
     resource: bundle/rbac.tar.gz
     polling:
-      # do not polling bundle too frequently
-      min_delay_seconds: 300
-      max_delay_seconds: 600
+      # polling bundle frequently for verify
+      min_delay_seconds: 10
+      max_delay_seconds: 30
 
 decision_logs:
   service: example_bundle

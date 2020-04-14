@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eu
 workspace=$(cd "$(dirname "$0")" && pwd -P)
 
 opa_verify() {
@@ -14,6 +13,12 @@ opa_verify() {
     fi
 }
 {
+    echo "Checking go mod cache exist..."
+
+    cd "$workspace"/../bundle/docker-compose/demo-server || exit
+    GOPATH="$PWD"/.go-cache go mod download
+    ls .go-cache/
+
     cd "$workspace"/../bundle || exit
     echo "Verify slim version of bundle server monitor..."
     sh start.sh start

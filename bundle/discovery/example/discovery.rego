@@ -4,10 +4,10 @@ discovery = {
 	"bundles": {"authz": {
 		"service": "example_discovery",
 		"resource": bundle_name,
-		# do not polling bundle too frequently
+		# polling bundle frequently for verify
 		"polling": {
-			"min_delay_seconds": 300,
-			"max_delay_seconds": 600,
+			"min_delay_seconds": 10,
+			"max_delay_seconds": 30,
 		},
 	}},
 	"default_decision": "rbac/allow",

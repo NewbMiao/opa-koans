@@ -3,3 +3,5 @@ node_modules
 repl/
 *.tar.gz
 demo-app
+.go-cache
+v1-data-input.json

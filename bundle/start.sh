@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eu
 workspace=$(cd "$(dirname "$0")" && pwd -P)
 listContainer="docker ps -f network=docker-compose_monitor"
 dockerComposeDir="$workspace/docker-compose"
@@ -25,7 +24,7 @@ action="$1"
   "start")
     bundle
     cd "$dockerComposeDir" || exit
-    docker-compose -f docker-compose-slim.yaml up -d # --build
+    docker-compose -f docker-compose-slim.yaml up -d
     ;;
   "stop")
     cd "$dockerComposeDir" || exit
@@ -34,7 +33,7 @@ action="$1"
   "start-advance")
     bundle
     cd "$dockerComposeDir" || exit
-    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d # --build
+    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d
     ;;
   "stop-advance")
     cd "$dockerComposeDir" || exit
