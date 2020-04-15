@@ -4,26 +4,11 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
 listContainer="docker ps -f network=docker-compose_monitor"
 dockerComposeDir="$workspace/docker-compose"
 
-opa_bundle() {
-  # bundle
-  cd "$workspace"/example || exit
-  find . -type f ! -name "*.tar.gz" -print0 | tar -cvzf rbac.tar.gz --null -T -
-  mv rbac.tar.gz "$dockerComposeDir/demo-server"
-  echo "RBAC files bundled!"
-
-  # discovery
-  cd "$workspace"/discovery || exit
-  find . -type f ! -name "*.tar.gz" -print0 | tar -cvzf discovery.tar.gz --null -T -
-  mv discovery.tar.gz "$dockerComposeDir/demo-server"
-  echo "Discovery files bundled!"
-}
-
 action="$1"
 
 {
   case "$action" in
   "start")
-    opa_bundle
     sh "$dockerComposeDir"/demo-server/build.sh
     cd "$dockerComposeDir" || exit
     docker-compose -f docker-compose-slim.yaml up -d
@@ -33,7 +18,6 @@ action="$1"
     docker-compose -f docker-compose-slim.yaml stop
     ;;
   "start-advance")
-    opa_bundle
     sh "$dockerComposeDir"/demo-server/build.sh
     cd "$dockerComposeDir" || exit
     docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d

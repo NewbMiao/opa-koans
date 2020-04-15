@@ -5,3 +5,4 @@ repl/
 .go-cache
 v1-data-input.json
 .DS_Store
+demo-app

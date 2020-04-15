@@ -6,6 +6,7 @@ default allow = false
 allow {
 	# opa eval -f pretty -d quick-start -i quick-start/input.json "data.example_rbac.allow" --explain=notes
 	# trace(role_name)
+	some role_name
 	user_has_role[role_name]
 	role_has_permission[role_name]
 }
@@ -14,13 +15,13 @@ allow {
 user_has_role[role_name] {
 	role_binding = data.bindings[_]
 	role_binding.role = role_name
-	role_binding.user = input.subject.user
+	role_binding.user == input.subject.user
 }
 
 # check role permission exist
 role_has_permission[role_name] {
 	role = data.roles[_]
 	role.name = role_name
-	role.operation = input.action.operation
-	role.resource = input.action.resource
+	role.operation == input.action.operation
+	role.resource == input.action.resource
 }
