@@ -4,3 +4,4 @@ repl/
 *.tar.gz
 .go-cache
 v1-data-input.json
+.DS_Store

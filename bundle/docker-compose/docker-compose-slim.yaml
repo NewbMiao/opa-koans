@@ -40,8 +40,12 @@ services:
         container_name: golang
         restart: always
         volumes:
-            - ./demo-server:/code
-            - ./demo-server/.go-cache/pkg/mod:/go/pkg/mod
+            # the `go build` way (skip `go mod download` during start)
+            - ./demo-server/demo-app:/code/demo-app
+            - ./demo-server/rbac.tar.gz:/code/rbac.tar.gz
+            - ./demo-server/discovery.tar.gz:/code/discovery.tar.gz
+            # the `go run main.go opa.go` way
+            # - ./demo-server/.go-cache/pkg/mod:/go/pkg/mod
         environment:
             - GOPROXY=https://goproxy.cn,direct
         ports:
@@ -49,12 +53,7 @@ services:
         networks:
             - monitor
         working_dir: /code
-        command: go run main.go opa.go
-        # healthcheck:
-        #     test: ["CMD-SHELL", "nc -z 0.0.0.0 8888 || exit 1"]
-        #     interval: 10s
-        #     timeout: 40s
-        #     retries: 4
+        entrypoint: ["/code/demo-app"]
     # collecting opa-bundle and other metrics
     prometheus:
         image: prom/prometheus

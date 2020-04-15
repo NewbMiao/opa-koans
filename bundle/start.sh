@@ -4,7 +4,7 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
 listContainer="docker ps -f network=docker-compose_monitor"
 dockerComposeDir="$workspace/docker-compose"
 
-bundle() {
+opa_bundle() {
   # bundle
   cd "$workspace"/example || exit
   find . -type f ! -name "*.tar.gz" -print0 | tar -cvzf rbac.tar.gz --null -T -
@@ -23,7 +23,8 @@ action="$1"
 {
   case "$action" in
   "start")
-    bundle
+    opa_bundle
+    sh "$dockerComposeDir"/demo-server/build.sh
     cd "$dockerComposeDir" || exit
     docker-compose -f docker-compose-slim.yaml up -d
     ;;
@@ -32,7 +33,8 @@ action="$1"
     docker-compose -f docker-compose-slim.yaml stop
     ;;
   "start-advance")
-    bundle
+    opa_bundle
+    sh "$dockerComposeDir"/demo-server/build.sh
     cd "$dockerComposeDir" || exit
     docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d
     ;;
@@ -50,10 +52,10 @@ action="$1"
     docker logs golang 2>&1 | grep "$2" --color
     ;;
   "opa-ping")
-    # demo-sever need go mod download first, which will need wait a while before it ready
-    "$workspace"/wait-for-it.sh 0.0.0.0:8888/auth echo "demo-server is ready!"
-    secs="${2:-5}"
-    echo "Will ping opa-bundle after ${secs}s (wait bundle update setup)..."
+    # demo-sever `go run` way: wait go mod download fininshed
+    # "$workspace"/wait-for-it.sh 0.0.0.0:8888/auth echo "demo-server is ready!"
+    secs="${2:-1}"
+    echo "Will ping opa-bundle after ${secs}s ..."
     sleep "$secs"
     input=$(cat "$workspace/../quick-start/input.json")
     inputWrap="{\"input\": $input}"
