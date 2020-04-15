@@ -17,7 +17,7 @@ bundles:
     polling:
       # polling bundle frequently for verify
       min_delay_seconds: 10
-      max_delay_seconds: 30
+      max_delay_seconds: 20
 
 decision_logs:
   service: example_bundle

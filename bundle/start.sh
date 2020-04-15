@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 workspace=$(cd "$(dirname "$0")" && pwd -P)
 listContainer="docker ps -f network=docker-compose_monitor"
 dockerComposeDir="$workspace/docker-compose"
@@ -49,8 +50,10 @@ action="$1"
     docker logs golang 2>&1 | grep "$2" --color
     ;;
   "opa-ping")
-    secs="${2:-1}"
-    echo "Will ping opa-bundle after ${secs}s ..."
+    # demo-sever need go mod download first, which will need wait a while before it ready
+    "$workspace"/wait-for-it.sh 0.0.0.0:8888/auth echo "demo-server is ready!"
+    secs="${2:-5}"
+    echo "Will ping opa-bundle after ${secs}s (wait bundle update setup)..."
     sleep "$secs"
     input=$(cat "$workspace/../quick-start/input.json")
     inputWrap="{\"input\": $input}"
@@ -69,6 +72,8 @@ action="$1"
     echo
     # shellcheck disable=SC2046
     docker rm -f -v $($listContainer -a -q)
+    echo "Will clean network:"
+    docker network rm docker-compose_monitor
     ;;
   *)
     cat <<EOF

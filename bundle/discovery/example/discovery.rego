@@ -7,7 +7,7 @@ discovery = {
 		# polling bundle frequently for verify
 		"polling": {
 			"min_delay_seconds": 10,
-			"max_delay_seconds": 30,
+			"max_delay_seconds": 20,
 		},
 	}},
 	"default_decision": "rbac/allow",

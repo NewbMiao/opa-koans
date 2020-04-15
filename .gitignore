@@ -2,6 +2,5 @@ node_modules
 *.txt
 repl/
 *.tar.gz
-demo-app
 .go-cache
 v1-data-input.json

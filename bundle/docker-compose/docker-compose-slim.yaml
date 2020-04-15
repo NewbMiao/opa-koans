@@ -50,11 +50,11 @@ services:
             - monitor
         working_dir: /code
         command: go run main.go opa.go
-        healthcheck:
-            test: ["CMD-SHELL", "nc -z 0.0.0.0 8888 || exit 1"]
-            interval: 5s
-            timeout: 40s
-            retries: 8
+        # healthcheck:
+        #     test: ["CMD-SHELL", "nc -z 0.0.0.0 8888 || exit 1"]
+        #     interval: 10s
+        #     timeout: 40s
+        #     retries: 4
     # collecting opa-bundle and other metrics
     prometheus:
         image: prom/prometheus
