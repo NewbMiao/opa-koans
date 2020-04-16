@@ -27,8 +27,7 @@ opa_bundle() {
     cd "$workspace" || exit
 
     GOPATH="$GO_CACHE_DIR" CGO_ENABLED=0 GOOS="$ENV_OS" GOARCH=amd64 go build -o demo-app main.go opa.go
-    echo "go mod cache in:"
-    echo "$GO_CACHE_DIR"
+    echo "go mod cache in .go-cache:"
     ls "$GO_CACHE_DIR"/pkg/mod
     echo "demo-app built!"
 }

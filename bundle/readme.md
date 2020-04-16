@@ -85,6 +85,8 @@ You can change these config to test it locally, hoping it can help you to unders
 
 More info see `scripts/bundleVerify.sh`, which is used for opa-koans's [github action](https://github.com/NewbMiao/opa-koans/actions) now.
 
+[![asciicast](https://asciinema.org/a/320653.svg)](https://asciinema.org/a/320653)
+
 Some referrence:
 
 - [opa management api](https://www.openpolicyagent.org/docs/latest/management/)

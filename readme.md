@@ -91,8 +91,7 @@ opa eval -i input.json -d data.json -d example.rego "data.example_rbac"
 - [函数和虚拟文档要分清](http://blog.newbmiao.com/2020/03/18/opa-func-and-virtual-doc.html)
 - [简洁的推导式](http://blog.newbmiao.com/2020/03/20/opa-comprehensions.html)
 - [测试、性能分析和基准测试](http://blog.newbmiao.com/2020/04/05/opa-test-profile-and-benchmark.html)
-
-### bundle封装
+- [强大的Bundle](http://blog.newbmiao.com/2020/04/16/opa-bundle.html)
 
 ### 实战
 
