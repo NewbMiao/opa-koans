@@ -4,13 +4,7 @@
 
 OPA入门系列
 
-OPA，重新定义规则引擎，灵活而强大的声明式语言全面支持通用策略定义。
-
-## 为什么做这个教程
-
-- 国外项目接触比较多
-- 底层是Go实现，简洁而优雅
-- 希望给国内策略引擎多一种了解，多一个选择。
+OPA（OpenPolicyAgent）, 云原生时代的通用规则引擎，重新定义策略引擎，灵活而强大的声明式语言全面支持通用策略定义。
 
 ## 什么是OPA
 
@@ -25,7 +19,9 @@ OPA，重新定义规则引擎，灵活而强大的声明式语言全面支持�
 ![opa](https://d33wubrfki0l68.cloudfront.net/b394f524e15a67457b85fdfeed02ff3f2764eb9e/6ac2b/docs/latest/images/opa-service.svg)
 
 文字太直白，看看OPA作者怎么说：
-[OPA: The Cloud Native Policy Engine - Torin Sandall, Styra](https://www.youtube.com/watch?v=XEHeexPpgrA&feature=youtu.be)
+
+- [OPA: The Cloud Native Policy Engine - Torin Sandall, Styra](https://www.bilibili.com/video/BV1AE411V7Hs/)
+- [Deep Dive- Open Policy Agent - Torin Sandall & Tim Hinrichs, Styra（2019)](https://www.bilibili.com/video/BV19E411A7BH/)
 
 ## 优点
 
@@ -37,7 +33,7 @@ OPA，重新定义规则引擎，灵活而强大的声明式语言全面支持�
 
 - 输入和输出支持任意格式
 
-配合强大的声明式策略语言Rego，描述任意规则都不是问题
+配合强大的声明式策略语言`Rego`，描述任意规则都不是问题
 
 - 全面支持规则和系统解耦
 
@@ -51,7 +47,7 @@ OPA，重新定义规则引擎，灵活而强大的声明式语言全面支持�
   - [partial evaluatio](https://blog.openpolicyagent.org/partial-evaluation-162750eaf422)
 - 应用广泛
 
-除了继承做auth外，还可以应用到k8s,terraform,docker,kafka,sql,linux上做规则决策
+除了继承做auth外，还可以应用到`k8s`,`terraform`,`docker`,`kafka`,`sql`,`linux`上做规则决策
 
 - 工具齐全
   - 有命令行，有交互式运行环境
@@ -91,7 +87,7 @@ opa eval -i input.json -d data.json -d example.rego "data.example_rbac"
 - [函数和虚拟文档要分清](http://blog.newbmiao.com/2020/03/18/opa-func-and-virtual-doc.html)
 - [简洁的推导式](http://blog.newbmiao.com/2020/03/20/opa-comprehensions.html)
 - [测试、性能分析和基准测试](http://blog.newbmiao.com/2020/04/05/opa-test-profile-and-benchmark.html)
-- [强大的Bundle](http://blog.newbmiao.com/2020/04/16/opa-bundle.html)
+- [分布式利器Bundle](http://blog.newbmiao.com/2020/04/16/opa-bundle.html)
 
 ### 实战
 
