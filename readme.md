@@ -6,6 +6,8 @@ OPA入门系列
 
 OPA（OpenPolicyAgent）, 云原生时代的通用规则引擎，重新定义策略引擎，灵活而强大的声明式语言全面支持通用策略定义。
 
+而且，2019年4月2号`OPA`正式进入了`CNCF`，作为孵化级托管项目，详见[声明](https://www.cncf.io/blog/2019/04/02/toc-votes-to-move-opa-into-cncf-incubator/)
+
 ## 什么是OPA
 
 > see in [OPA philosophy docs](https://www.openpolicyagent.org/docs/latest/philosophy/#what-is-opa)
@@ -44,7 +46,9 @@ OPA（OpenPolicyAgent）, 云原生时代的通用规则引擎，重新定义策
   - Go类库引入
 - 决策快
   - [rule indexing](https://blog.openpolicyagent.org/optimizing-opa-rule-indexing-59f03f17caf3)
-  - [partial evaluatio](https://blog.openpolicyagent.org/partial-evaluation-162750eaf422)
+  ![决策树索引](https://miro.medium.com/max/780/0*d7_1BA-vVgb0WqAk.)
+  - [partial evaluation](https://blog.openpolicyagent.org/partial-evaluation-162750eaf422)
+  ![将动态计算尽可能转为编译时确定的静态规则](https://miro.medium.com/max/1400/0*FN2kZ9ay1duS2HPN.)
 - 应用广泛
 
 除了继承做auth外，还可以应用到`k8s`,`terraform`,`docker`,`kafka`,`sql`,`linux`上做规则决策
