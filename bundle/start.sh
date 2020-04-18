@@ -15,7 +15,7 @@ action="$1"
     ;;
   "stop")
     cd "$dockerComposeDir" || exit
-    docker-compose -f docker-compose-slim.yaml stop
+    docker-compose -f docker-compose-slim.yaml down --remove-orphans
     ;;
   "start-advance")
     sh "$dockerComposeDir"/demo-server/build.sh
@@ -24,7 +24,7 @@ action="$1"
     ;;
   "stop-advance")
     cd "$dockerComposeDir" || exit
-    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml stop
+    docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml down --remove-orphans
     ;;
   "logs")
     [ "$2" = "" ] && echo "Please specify one below container name to see log:" && $listContainer && exit 1
