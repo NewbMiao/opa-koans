@@ -2,13 +2,15 @@
 
 A quick demo of how to use opa bundle
 
+> View [demo code](https://github.com/NewbMiao/opa-koans/tree/master/bundle) in github
+
 ## Covered
 
 - bundle api
 - decision log api
 - status api
 - discovery api
-- opa go lib intergration
+- opa go lib integration
 - monitor: prometheus, grafana etc
 
 ## Cmd usage
@@ -28,18 +30,18 @@ Usage:
 ## Slim version
 
 - opa-bundle
-Fetch bundle `rbac.tar.gz` from demo-server, and upload decison-log, report status
+Fetch bundle `rbac.tar.gz` from demo-server, and upload decision-log, report status
 See config: `opa/config-bundle.yaml`
 - opa-discovery
 Fetch discovery config from demo-server, see config: `opa/config-bundle.yaml`
 See config: `opa/config-discovery.yaml`
 - demo-server
-Collect opa-bundle, opa-discovery bundle(discovery) request, and echo received decison-log,status
-Also provide opa go lib intergration to make decision in `0.0.0.0:8888/auth`
+Collect opa-bundle, opa-discovery bundle(discovery) request, and echo received decision-log,status
+Also provide opa go lib integration to make decision in `0.0.0.0:8888/auth`
 - prometheus
 Collect opa-bundle and opa-discovery metrics
 
-![promethus metrics](docker-compose/graph/prometheus.png)
+![prometheus metrics](docker-compose/graph/prometheus.png)
 
 ```shell
 # start
@@ -61,7 +63,7 @@ When you want to see prometheus collected metrics:
 
 - Login in http://0.0.0.0:3000 (login name is admin, password is same)
 - Create a data source - Url: http://prometheus:9090
-- New Dashborad
+- New Dashboard
 
 ![grafana metrics](docker-compose/graph/grafana.png)
 
@@ -87,7 +89,7 @@ More info see `scripts/bundleVerify.sh`, which is used for opa-koans's [github a
 
 [![asciicast](https://asciinema.org/a/320653.svg)](https://asciinema.org/a/320653)
 
-Some referrence:
+Some references:
 
 - [opa management api](https://www.openpolicyagent.org/docs/latest/management/)
 - [yunlzheng/prometheus-book](https://github.com/yunlzheng/prometheus-book)
