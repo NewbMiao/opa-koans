@@ -8,10 +8,17 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/gorilla/mux"
 )
+
+// used for etag
+var revisionMap = map[string]string{
+	"rbac.tar.gz":      os.Getenv("REVISION_BUNDLE"),
+	"discovery.tar.gz": os.Getenv("REVISION_DISCOVERY"),
+}
 
 func echo(w http.ResponseWriter, r *http.Request) {
 	var reader io.ReadCloser
@@ -63,9 +70,15 @@ func main() {
 
 func handleBundleFile(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	log.Println("Recv request of bundle:", r.RemoteAddr, vars["file"])
+	file := vars["file"]
+	log.Println("Recv request of bundle:", r.RemoteAddr, file)
+
+	if isFileStatusNotModify(w, r, file) {
+		log.Println("file not changed, return 304")
+		return
+	}
 	pwd, _ := os.Getwd()
-	des := pwd + string(os.PathSeparator) + vars["file"]
+	des := pwd + string(os.PathSeparator) + file
 	desStat, err := os.Stat(des)
 	if err != nil {
 		log.Println("File Not Exit", des)
@@ -82,4 +95,23 @@ func handleBundleFile(w http.ResponseWriter, r *http.Request) {
 			_, _ = w.Write(fileData)
 		}
 	}
+}
+
+func isFileStatusNotModify(w http.ResponseWriter, r *http.Request, file string) bool {
+	etag := "default"
+	if v, ok := revisionMap[file]; ok {
+		etag = v
+	}
+	w.Header().Set("Etag", `"`+etag+`"`)
+	w.Header().Set("Cache-Control", "max-age=7200") // 2h
+
+	if match := r.Header.Get("If-None-Match"); match != "" {
+		// unquote if needed
+		m, _ := strconv.Unquote(match)
+		if strings.EqualFold(m, etag) {
+			w.WriteHeader(http.StatusNotModified)
+			return true
+		}
+	}
+	return false
 }
