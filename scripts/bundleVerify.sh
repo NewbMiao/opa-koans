@@ -3,7 +3,7 @@ set -e
 workspace=$(cd "$(dirname "$0")" && pwd -P)
 
 opa_verify() {
-    res=$(sh start.sh opa-ping 15)
+    res=$(sh start.sh opa-ping 10)
     echo "Opa ping responses: $res"
     verified=$(echo "$res" | grep -c "true")
     if [ "$verified" = "3" ]; then

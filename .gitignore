@@ -6,4 +6,5 @@ repl/
 v1-data-input.json
 .DS_Store
 demo-app
+revision.env
 *.wasm
