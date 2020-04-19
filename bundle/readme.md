@@ -1,6 +1,6 @@
-# opa bundle monitor
+# opa bundle demo
 
-A qucik demo of how to use opa bundle
+A quick demo of how to use opa bundle
 
 ## Covered
 

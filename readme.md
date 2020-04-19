@@ -18,7 +18,7 @@ OPA（OpenPolicyAgent）, 云原生时代的通用规则引擎，重新定义策
 - 可与服务共存
 - 集成方式可以是sidecar、主机级守护进程或库引入
 
-![opa](https://d33wubrfki0l68.cloudfront.net/b394f524e15a67457b85fdfeed02ff3f2764eb9e/6ac2b/docs/latest/images/opa-service.svg)
+![opa](./misc/opa-service.png)
 
 文字太直白，看看OPA作者怎么说：
 
@@ -39,16 +39,16 @@ OPA（OpenPolicyAgent）, 云原生时代的通用规则引擎，重新定义策
 
 - 全面支持规则和系统解耦
 
-![如图](https://d33wubrfki0l68.cloudfront.net/7929e52d7c6324994d75e05d7e132d84e2308475/00249/docs/latest/images/benefits.svg)
+![如图](./misc/decouple.png)
 
 - 集承方式多
   - Daemon式服务
   - Go类库引入
 - 决策快
   - [rule indexing](https://blog.openpolicyagent.org/optimizing-opa-rule-indexing-59f03f17caf3)
-  ![决策树索引](https://miro.medium.com/max/780/0*d7_1BA-vVgb0WqAk.)
+  ![决策树索引](./misc/rule-indexing.png)
   - [partial evaluation](https://blog.openpolicyagent.org/partial-evaluation-162750eaf422)
-  ![将动态计算尽可能转为编译时确定的静态规则](https://miro.medium.com/max/1400/0*FN2kZ9ay1duS2HPN.)
+  ![将动态计算尽可能转为编译时确定的静态规则](./misc/partial-evaluation.png)
 - 应用广泛
 
 除了继承做auth外，还可以应用到`k8s`,`terraform`,`docker`,`kafka`,`sql`,`linux`上做规则决策
@@ -77,7 +77,7 @@ brew install opa
 
 ### [一个RBAC例子](http://blog.newbmiao.com/2020/03/13/opa-quick-start.html)
 
-几行代码实现一个简单的RBAC认证服务: [example_rbac](/quick-start)
+几行代码实现一个简单的RBAC认证服务: [example_rbac](https://github.com/NewbMiao/opa-koans/tree/master/quick-start)
 
 ```sh
 cd quick-start
@@ -92,6 +92,7 @@ opa eval -i input.json -d data.json -d example.rego "data.example_rbac"
 - [简洁的推导式](http://blog.newbmiao.com/2020/03/20/opa-comprehensions.html)
 - [测试、性能分析和基准测试](http://blog.newbmiao.com/2020/04/05/opa-test-profile-and-benchmark.html)
 - [分布式利器Bundle](http://blog.newbmiao.com/2020/04/16/opa-bundle.html)
+  - [Bundle Demo](https://github.com/NewbMiao/opa-koans/blob/master/bundle/readme.md)
 
 ### 实战
 
