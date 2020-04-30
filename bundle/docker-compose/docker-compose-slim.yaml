@@ -3,8 +3,14 @@ version: "3.6"
 
 # The slim version of opa bundle server monitor
 networks:
+    opa-network:
+        driver: bridge
     monitor:
         driver: bridge
+
+volumes: 
+    demo_server_data:
+    prometheus_data:
 
 services:
     opa-bundle:
@@ -20,6 +26,7 @@ services:
             - "8181:8181"
         networks:
             - monitor
+            - opa-network
         command: run -s -a :8181 -c /code/config-bundle.yaml
     opa-discovery:
         depends_on:
@@ -34,12 +41,15 @@ services:
             - "8182:8182"
         networks:
             - monitor
+            - opa-network
         command: run -s -a :8182 -c /code/config-discovery.yaml
     demo-server:
-        image: golang:1.14.2-alpine
+        build: ./demo-server/
+        # image: golang:1.14.2-alpine
         container_name: golang
         restart: always
         volumes:
+            - demo_server_data:/code
             # the `go build` way (skip `go mod download` during start)
             - ./demo-server/demo-app:/code/demo-app
             - ./demo-server/rbac.tar.gz:/code/rbac.tar.gz
@@ -49,10 +59,10 @@ services:
         ports:
             - "8888:8888"
         networks:
-            - monitor
+            - opa-network
         env_file: ./demo-server/revision.env
         working_dir: /code
-        entrypoint: ["/code/demo-app"]
+        # entrypoint: ["/code/demo-app"]
     # collecting opa-bundle and other metrics
     prometheus:
         image: prom/prometheus
@@ -61,6 +71,7 @@ services:
         restart: always
         volumes:
             - ./prometheus/prometheus-slim.yml:/etc/prometheus/prometheus.yml
+            - prometheus_data:/prometheus
         ports:
             - "9090:9090"
         networks:

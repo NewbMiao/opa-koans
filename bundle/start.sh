@@ -9,16 +9,20 @@ action="$1"
 {
   case "$action" in
   "start")
-    sh "$dockerComposeDir"/demo-server/build.sh linux
+    sh "$dockerComposeDir"/demo-server/build-opa.sh
     cd "$dockerComposeDir" || exit
     docker-compose -f docker-compose-slim.yaml up -d
     ;;
   "stop")
     cd "$dockerComposeDir" || exit
+    docker-compose -f docker-compose-slim.yaml stop
+    ;;
+  "down")
+    cd "$dockerComposeDir" || exit
     docker-compose -f docker-compose-slim.yaml down --remove-orphans
     ;;
   "start-advance")
-    sh "$dockerComposeDir"/demo-server/build.sh linux
+    sh "$dockerComposeDir"/demo-server/build-opa.sh
     cd "$dockerComposeDir" || exit
     docker-compose -f docker-compose-slim.yaml -f docker-compose-advance.yaml up -d
     ;;
