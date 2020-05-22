@@ -13,7 +13,7 @@ getFileNames[x] {
 	file.type = "posix"
 	file.path = trim(file.path)
 	tmp := split(file.path, "/")
-	x := tmp[count(tmp) - 1]
+	x := tmp[minus(count(tmp), 1)]
 }
 
 getFileNames[x] {
@@ -21,5 +21,5 @@ getFileNames[x] {
 	file.type = "traditional-mac"
 	file.path = trim(file.path)
 	tmp := split(file.path, ":")
-	x := tmp[count(tmp) - 1]
+	x := tmp[minus(count(tmp), 1)]
 }

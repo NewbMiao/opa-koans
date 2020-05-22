@@ -18,14 +18,14 @@ getFileName(type, str) = x {
 	# eval_conflict_error: functions must not produce multiple outputs for same inputs
 	str = trim(str)
 	tmp := split(str, "/")
-	x := tmp[count(tmp) - 1]
+	x := tmp[minus(count(tmp), 1)]
 }
 
 getFileName(type, str) = x {
 	type = "traditional-mac" # this is needed, without will report error
 	str = trim(str)
 	tmp := split(str, ":")
-	x := tmp[count(tmp) - 1]
+	x := tmp[minus(count(tmp), 1)]
 }
 
 # Or
