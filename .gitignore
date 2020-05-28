@@ -9,3 +9,4 @@ demo-app
 revision.env
 *.wasm
 bench.txt
+bundle/rbac-input.json

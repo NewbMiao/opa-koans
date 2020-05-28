@@ -20,5 +20,10 @@ jobs:
         run: sh scripts/regoTest.sh
       - name: Bundle Benchmark
         run: sh scripts/benchstat.sh
+      - name: Upload Benchmark stat file
+        uses: actions/upload-artifact@v1
+        with:
+          name: bench.txt
+          path: bundle/bench.txt
       - name: Bundle Verify
         run: sh scripts/bundleVerify.sh

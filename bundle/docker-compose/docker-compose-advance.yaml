@@ -24,7 +24,7 @@ services:
     # some addition config
     # collecting host hardware and operating system data
     node-exporter:
-        image: quay.io/prometheus/node-exporter
+        image: prom/node-exporter
         container_name: node-exporter
         hostname: node-exporter
         restart: always
