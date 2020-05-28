@@ -8,3 +8,4 @@ v1-data-input.json
 demo-app
 revision.env
 *.wasm
+bench.txt

@@ -18,5 +18,7 @@ jobs:
         run: sh scripts/regoLint.sh
       - name: Rego Test
         run: sh scripts/regoTest.sh
+      - name: Bundle Benchmark
+        run: sh scripts/benchstat.sh
       - name: Bundle Verify
         run: sh scripts/bundleVerify.sh
