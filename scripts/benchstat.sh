@@ -16,7 +16,7 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
     echo "benchmark optmized rbac bundle"
     docker run --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest bench -f gobench -b rbac-optmized.tar.gz --count "$cnt" -i rbac-input.json --benchmem 'data.rbac.allow' >rbac-optmized.txt
     echo "use benchstat to compare them:"
-    go install golang.org/x/perf/cmd/benchstat
+    go get -u golang.org/x/perf/cmd/benchstat
     benchstat rbac-raw.txt rbac-optmized.txt | tee bench.txt
     rm rbac-*.txt rbac-*.json rbac-*.tar.gz
 }
