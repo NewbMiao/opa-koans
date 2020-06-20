@@ -42,6 +42,8 @@ github.com/open-policy-agent/opa v0.20.4 h1:KgW8h/fiLbUCVIgGzb40qPtXjQv1rW7jlPHW
 github.com/open-policy-agent/opa v0.20.4/go.mod h1:cZaTfhxsj7QdIiUI0U9aBtOLLTqVNe+XE60+9kZKLHw=
 github.com/open-policy-agent/opa v0.20.5 h1:1zEofrGa+a1Tb186yflIVMkkdAQujG3ySPbeTmR+py0=
 github.com/open-policy-agent/opa v0.20.5/go.mod h1:cZaTfhxsj7QdIiUI0U9aBtOLLTqVNe+XE60+9kZKLHw=
+github.com/open-policy-agent/opa v0.21.0 h1:0CVq4EEUP+fJEzjwd9yNLSTWZk4W5rM+QbjdLcT1nY0=
+github.com/open-policy-agent/opa v0.21.0/go.mod h1:cZaTfhxsj7QdIiUI0U9aBtOLLTqVNe+XE60+9kZKLHw=
 github.com/peterh/liner v0.0.0-20170211195444-bf27d3ba8e1d h1:zapSxdmZYY6vJWXFKLQ+MkI+agc+HQyfrCGowDSHiKs=
 github.com/peterh/liner v0.0.0-20170211195444-bf27d3ba8e1d/go.mod h1:xIteQHvHuaLYG9IFj6mSxM0fCKrs34IrEQUhOYuGPHc=
 github.com/pkg/errors v0.0.0-20181023235946-059132a15dd0 h1:R+lX9nKwNd1n7UE5SQAyoorREvRn3aLF6ZndXBoIWqY=
