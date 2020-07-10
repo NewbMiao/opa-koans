@@ -9,7 +9,7 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
     docker run --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest build -b example -o rbac-optmized.tar.gz -O 1 -e rbac/allow -t rego
     echo "rbac files bundled with optmization!"
 
-    cnt=3
+    cnt=5 # https://github.com/golang/go/issues/23471
     cp "$workspace/../quick-start/input.json" rbac-input.json
     echo "benchmark orignal rbac bundle..."
     docker run --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest bench -f gobench -b rbac-raw.tar.gz --count "$cnt" -i rbac-input.json --benchmem 'data.rbac.allow' >rbac-raw.txt
