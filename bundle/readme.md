@@ -2,6 +2,8 @@
 
 A quick demo of how to use opa bundle
 
+![bundle-demo-arch](docker-compose/graph/bundle-demo.png)
+
 > View [demo code](https://github.com/NewbMiao/opa-koans/tree/master/bundle) in github
 
 ## Covered
