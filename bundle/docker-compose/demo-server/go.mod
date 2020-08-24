@@ -4,5 +4,5 @@ go 1.14
 
 require (
 	github.com/gorilla/mux v1.7.4
-	github.com/open-policy-agent/opa v0.23.1
+	github.com/open-policy-agent/opa v0.23.2
 )
