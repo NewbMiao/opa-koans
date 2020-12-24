@@ -21,7 +21,7 @@ jobs:
       - name: Bundle Benchmark
         run: sh scripts/benchstat.sh
       - name: Upload Benchmark stat file
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: bench.txt
           path: bundle/bench.txt
