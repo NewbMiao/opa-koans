@@ -1,11 +1,14 @@
 {
-  "name": "example-app",
+  "name": "opa-koans-wasm",
   "version": "1.0.0",
-  "description": "example app",
+  "description": "example of opa wasm",
   "main": "app.js",
-  "scripts": {},
-  "dependencies": {
-    "@open-policy-agent/opa-wasm": "^1.0.0"
+  "scripts": {
+    "test": "node app.js '{\"action\":{\"operation\":\"read\",\"resource\":\"widgets\"},\"subject\":{\"user\":\"inspector-alice\"}}'"
   },
-  "license": "Apache-2.0"
+  "author": "newbmiao",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@open-policy-agent/opa-wasm": "^1.1.0"
+  }
 }
