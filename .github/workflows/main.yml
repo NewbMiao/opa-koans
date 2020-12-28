@@ -18,12 +18,14 @@ jobs:
         run: sh scripts/regoLint.sh
       - name: Rego Test
         run: sh scripts/regoTest.sh
+      - name: Wasm Verify
+        run: sh scripts/wasmVerify.sh
       - name: Bundle Benchmark
         run: sh scripts/benchstat.sh
       - name: Upload Benchmark stat file
         uses: actions/upload-artifact@v2
         with:
           name: bench.txt
-          path: bundle/bench.txt
+          path: bundle/{*.txt|bench.html}
       - name: Bundle Verify
         run: sh scripts/bundleVerify.sh
