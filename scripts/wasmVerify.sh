@@ -4,6 +4,7 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
 
 {
     cd "$workspace"/../ || exit
+    cd wasm && npm install && cd -
     echo "Verify wasm..."
     res=$(sh wasm/run.sh "$(cat quick-start/input.json)")
     echo "Opa wasm responses: $res"
