@@ -1,6 +1,6 @@
 {
   "name": "opa-koans-wasm",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "example of opa wasm",
   "main": "app.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "newbmiao",
   "license": "Apache-2.0",
   "dependencies": {
-    "@open-policy-agent/opa-wasm": "^1.1.0"
+    "@open-policy-agent/opa-wasm": "^1.2.0"
   }
 }
