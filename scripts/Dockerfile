@@ -1,4 +1,4 @@
-FROM golang:1.16.4-alpine as build
+FROM golang:1.16.5-alpine as build
 RUN apk update && apk upgrade && \
     apk add --no-cache git
 RUN go get -u golang.org/x/perf/cmd/benchstat
