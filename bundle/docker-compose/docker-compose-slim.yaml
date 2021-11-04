@@ -36,7 +36,7 @@ services:
             - monitor
         command: run -s -a :8182 -c /code/config-discovery.yaml
     demo-server:
-        image: golang:1.17.2-alpine
+        image: golang:1.17.3-alpine
         container_name: golang
         restart: always
         volumes:
