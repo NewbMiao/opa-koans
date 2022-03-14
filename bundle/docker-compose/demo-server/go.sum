@@ -650,6 +650,8 @@ github.com/open-policy-agent/opa v0.37.2 h1:pR9i4xlsnlq7b5Zgw6oj7PcFaJ9HX+sY4yfu
 github.com/open-policy-agent/opa v0.37.2/go.mod h1:9YlKCh5WIk1Pu0bpIPozaJKQWpUDTVCMVpe55FVUfik=
 github.com/open-policy-agent/opa v0.38.0 h1:XuGM6yZmHCPO4o1JJGs8pKuoC/vMFkr4pjBVhFLrOk8=
 github.com/open-policy-agent/opa v0.38.0/go.mod h1:z0+Gw2+Re8cEf4/GjHr/wAL1diGy8BkhICIiCUb8y6A=
+github.com/open-policy-agent/opa v0.38.1 h1:4iSk7OBFe0kiO4Jfs5gWgDP+Hly9eoAs4jUcWG6j0Vo=
+github.com/open-policy-agent/opa v0.38.1/go.mod h1:z0+Gw2+Re8cEf4/GjHr/wAL1diGy8BkhICIiCUb8y6A=
 github.com/opentracing-contrib/go-observer v0.0.0-20170622124052-a52f23424492/go.mod h1:Ngi6UdF0k5OKD5t5wlmGhe/EDKPoUM3BXZSSfIuJbis=
 github.com/opentracing/basictracer-go v1.0.0/go.mod h1:QfBfYuafItcjQuMwinw9GhYKwFXS9KnPs5lxoYwgW74=
 github.com/opentracing/opentracing-go v1.0.2/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFStlNbqXla1AfSYxPUl2o=
