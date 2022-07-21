@@ -1,6 +1,6 @@
 module demo-server
 
-go 1.14
+go 1.18
 
 require (
 	github.com/gorilla/mux v1.8.0
