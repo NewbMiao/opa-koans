@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/gorilla/mux v1.8.0
-	github.com/open-policy-agent/opa v0.47.2
+	github.com/open-policy-agent/opa v0.47.3
 )
 
 require (
