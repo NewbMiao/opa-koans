@@ -79,7 +79,7 @@ brew install opa
 
 ## 入门
 
-### [一个RBAC例子](http://blog.newbmiao.com/2020/03/13/opa-quick-start.html)
+### [一个RBAC例子](https://newbmiao.github.io/2020/03/13/opa-quick-start.html)
 
 几行代码实现一个简单的RBAC认证服务: [example_rbac](https://github.com/NewbMiao/opa-koans/tree/master/quick-start)
 
@@ -88,15 +88,15 @@ cd quick-start
 opa eval -i input.json -d data.json -d example.rego "data.example_rbac"
 ```
 
-### [如何优雅的开发](http://blog.newbmiao.com/2020/03/14/how-to-use-opa-cli-elegantly.html)
+### [如何优雅的开发](https://newbmiao.github.io/2020/03/14/how-to-use-opa-cli-elegantly.html)
 
 ### 语法进阶
 
-- [函数和虚拟文档要分清](http://blog.newbmiao.com/2020/03/18/opa-func-and-virtual-doc.html)
-- [简洁的推导式](http://blog.newbmiao.com/2020/03/20/opa-comprehensions.html)
-- [测试、性能分析和基准测试](http://blog.newbmiao.com/2020/04/05/opa-test-profile-and-benchmark.html)
-- [分布式利器Bundle](http://blog.newbmiao.com/2020/04/16/opa-bundle.html)
-  - [Bundle demo doc](http://blog.newbmiao.com/opa-koans/bundle/)
+- [函数和虚拟文档要分清](https://newbmiao.github.io/2020/03/18/opa-func-and-virtual-doc.html)
+- [简洁的推导式](https://newbmiao.github.io/2020/03/20/opa-comprehensions.html)
+- [测试、性能分析和基准测试](https://newbmiao.github.io/2020/04/05/opa-test-profile-and-benchmark.html)
+- [分布式利器Bundle](https://newbmiao.github.io/2020/04/16/opa-bundle.html)
+  - [Bundle demo doc](https://newbmiao.github.io/opa-koans/bundle/)
 
 ## 实战
 
