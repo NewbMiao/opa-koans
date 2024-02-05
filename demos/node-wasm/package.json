@@ -1,0 +1,15 @@
+{
+  "name": "opa-entitlements",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@open-policy-agent/opa-wasm": "^1.8.1",
+    "js-yaml": "^4.1.0"
+  }
+}
