@@ -8,6 +8,7 @@ networks:
 
 services:
     opa-bundle:
+        platform: linux/amd64
         depends_on:
             - demo-server
         image: openpolicyagent/opa:latest
@@ -22,6 +23,7 @@ services:
             - monitor
         command: run -s -a :8181 -c /code/config-bundle.yaml
     opa-discovery:
+        platform: linux/amd64
         depends_on:
             - demo-server
         image: openpolicyagent/opa:latest
@@ -36,7 +38,7 @@ services:
             - monitor
         command: run -s -a :8182 -c /code/config-discovery.yaml
     demo-server:
-        image: golang:1.20.2-alpine
+        image: golang:1.21.6-alpine
         container_name: golang
         restart: always
         volumes:

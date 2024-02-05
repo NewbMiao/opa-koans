@@ -18,10 +18,10 @@ EOF
     dockerComposeDir="$workspace"/..
     cd "$bundleDir" || exit
     # enable partical evaluation optimize for bundle build
-    docker run --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest build -b example -o rbac.tar.gz -t rego -O 1 -e rbac/allow -r "$REVISION_BUNDLE"
+    docker run --platform linux/amd64 --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest build -b example -o rbac.tar.gz -t rego -O 1 -e rbac/allow -r "$REVISION_BUNDLE"
     echo "RBAC files bundled!"
 
-    docker run --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest build -b discovery -o discovery.tar.gz -t rego
+    docker run --platform linux/amd64 --rm -v "$(pwd)":/code -w /code openpolicyagent/opa:latest build -b discovery -o discovery.tar.gz -t rego
     mv rbac.tar.gz discovery.tar.gz "$dockerComposeDir/demo-server"
     echo "Discovery files bundled!"
 }

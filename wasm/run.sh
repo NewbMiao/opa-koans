@@ -6,7 +6,7 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
     bundleDir="$workspace/../quick-start"
     echo "example_rbac files bundled!"
     cd "$bundleDir"
-    docker run --rm -v "$bundleDir":/code -w /code openpolicyagent/opa:latest build -t wasm -e 'example_rbac/allow' -b .
+    docker run --platform linux/amd64 --rm -v "$bundleDir":/code -w /code openpolicyagent/opa:latest build -t wasm -e 'example_rbac/allow' -b .
     cd "$workspace" || exit
 
     mv "$bundleDir/"bundle.tar.gz .

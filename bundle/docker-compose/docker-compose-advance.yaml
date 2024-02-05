@@ -34,6 +34,7 @@ services:
             - monitor
     # collecting container data
     cadvisor:
+        platform: linux/amd64
         image: google/cadvisor:latest
         container_name: cadvisor
         hostname: cadvisor
