@@ -8,7 +8,6 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
     cd "$bundleDir"
     docker run --platform linux/amd64 --rm -v "$bundleDir":/code -w /code openpolicyagent/opa:latest build -t wasm -e 'example_rbac/allow' -b .
     cd "$workspace" || exit
-
     mv "$bundleDir/"bundle.tar.gz .
     tar -xzf bundle.tar.gz /policy.wasm /data.json
     rm bundle.tar.gz
