@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Shell Lint
         run: sh scripts/shellLint.sh
       - name: Yaml Lint
@@ -23,7 +23,7 @@ jobs:
       - name: Bundle Benchmark
         run: sh scripts/benchstat.sh
       - name: Upload Benchmark stat file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bench.txt
           path: bundle/{*.txt|bench.html}

@@ -100,4 +100,7 @@ opa eval -i input.json -d data.json -d example.rego "data.example_rbac"
 
 ## 实战
 
+[可扩展的Entitlements api demo](/demos/): 可扩展的rules data + entitlemnts policy
+
+
 文档一点点完善中。。。
