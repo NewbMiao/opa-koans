@@ -1,31 +1,26 @@
 package entitlements_test
 
 import data.entitlements.purchaseManagement
+import data.users["001"].product as dataProduct
 
 test_purchaseManagement_false {
-	"false" = purchaseManagement with input as {}
+	not purchaseManagement with dataProduct as {}
 }
 
-test_purchaseManagement_both {
-	"true" = purchaseManagement with input as {"product": {
+test_purchaseManagement_enabled {
+	purchaseManagement with dataProduct as {
 		"version": "1",
 		"sub_version": "2",
 		"money_available": 100,
-	}}
+	}
+		with input.userId as "001"
 }
 
-test_purchaseManagement_both {
-	"false" = purchaseManagement with input as {"product": {
+test_purchaseManagement_disabled {
+	not purchaseManagement with dataProduct as {
 		"version": "1",
 		"sub_version": "2",
 		"money_available": 0,
-	}}
-}
-
-test_purchaseManagement_tradiecore {
-	"true" = purchaseManagement with input as {"product": {
-		"version": "1",
-		"sub_version": "3",
-		"money_available": 100,
-	}}
+	}
+		with input.userId as "001"
 }

@@ -1,7 +1,4 @@
 {
-    "product":{
-        "version":"1",
-        "sub_version":"2",
-        "money_available": 100
-    }
+   
+    "userId": "001"
 }

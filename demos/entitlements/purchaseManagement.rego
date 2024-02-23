@@ -1,7 +1,8 @@
 package entitlements
 
-default purchaseManagement = "false"
+default purchaseManagement = false
 
-purchaseManagement = "true" {
-	input.product.money_available > 0
+purchaseManagement {
+	attributes = getUserProduct(input.userId)
+	attributes.money_available > 0
 }

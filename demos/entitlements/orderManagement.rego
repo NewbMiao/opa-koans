@@ -1,8 +1,10 @@
 package entitlements
 
-default orderManagement = "false"
+default orderManagement = false
 
-orderManagement = "true" {
-	input.product.version == "1"
-	input.product.sub_version = ["2", "3"][_]
+orderManagement {
+	attributes = getUserProduct(input.userId)
+	trace(attributes.version)
+	attributes.version = "1"
+	attributes.sub_version = ["2", "3"][_]
 }
