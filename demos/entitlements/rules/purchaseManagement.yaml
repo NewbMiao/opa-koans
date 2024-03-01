@@ -1,4 +1,4 @@
-purchaseManagment:
+purchaseManagement:
   product:
     money_available:
       min: 1

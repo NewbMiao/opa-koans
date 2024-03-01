@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 set -eu
 workspace=$(cd "$(dirname "$0")" && pwd -P)
+bundleType="${1:-wasm}"
+echo "bundleType: $bundleType"
 {
     cd "$workspace" || exit
-    files=()
-    for file in *.rego; do
-        if [[ $file != *_test.rego ]]; then
-            files+=("$file")
-        fi
-    done
-    opa build -t wasm -e entitlements "${files[@]}"
-    tar -xf bundle.tar.gz "/policy.wasm"
-    mv policy.wasm ../node-wasm/
-    rm bundle.tar.gz
-    cd ../node-wasm || exit
-    node app.js "$(cat ../entitlements/input.json)"
+
+    find . -type f -name '*.yaml' | xargs cat >rules.yaml
+    combined_json=$(yq eval-all '. | tojson' rules.yaml)
+    echo "{\"rules\": $combined_json}" >data.json
+
+    opa build -b . -t "${bundleType}" -e "entitlements/main" --optimize=1
 }

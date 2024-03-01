@@ -1,13 +1,36 @@
-{
-
-    "users": {
-        "001":{
-            "product":{
-                "version":"1",
-                "sub_version":"3",
-                "money_available": 100
-            }
-        }
+{"rules": {
+  "purchaseManagement": {
+    "product": {
+      "money_available": {
+        "min": 1
+      }
     }
-   
-}
+  },
+  "platforms": {
+    "newPlatform": {
+      "product": {
+        "fullVersion": [
+          "1.2",
+          "1.3"
+        ]
+      }
+    },
+    "oldPlatform": {
+      "product": {
+        "fullVersion": [
+          "1.0",
+          "1.1",
+          "1.2"
+        ]
+      }
+    }
+  },
+  "orderManagement": {
+    "product": {
+      "fullVersion": [
+        "1.2",
+        "1.3"
+      ]
+    }
+  }
+}}

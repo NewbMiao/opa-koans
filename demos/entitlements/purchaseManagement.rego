@@ -1,8 +1,8 @@
 package entitlements
+# import rego.v1
 
-default purchaseManagement = false
-
+default purchaseManagement :=false
 purchaseManagement {
-	attributes = getUserProduct(input.userId)
+	attributes = input.product
 	attributes.money_available > 0
-}
+} 

@@ -13,27 +13,13 @@ loadPolicy(policyWasm).then((policy) => {
   // Use console parameters for the input, do quick
   // validation by json parsing. Not efficient.. but
   // will raise an error
-  const input = JSON.parse(process.argv[2]);
+  const input = JSON.parse(fs.readFileSync(process.argv[2]));
+  const data = JSON.parse(fs.readFileSync(process.argv[3]));
   
-  // Load all YAML files as a combined JSON
-
-  const rulesDirPath = process.argv[3] ?? "../entitlements/rules";
-  // Load the each YAML file and convert it to JSON
-  const rules = fs.readdirSync(rulesDirPath).reduce((acc, file) => {
-    const rule = yaml.load(fs.readFileSync(`${
-      rulesDirPath
-    }/${
-      file
-    }`, 'utf8'));
-    return {
-      ...acc,
-      ...rule
-    };
-  }, {});
 
   
   // Provide a data document with a string value
-  policy.setData({ rules });
+  policy.setData(data);
 
   // Evaluate the policy and log the result
   const result = policy.evaluate(input, 'entitlements/main');

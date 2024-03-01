@@ -1,26 +1,25 @@
 package entitlements_test
 
+import rego.v1
 import data.entitlements.purchaseManagement
-import data.users["001"].product as dataProduct
+import input.product as dataProduct
 
-test_purchaseManagement_false {
+test_purchaseManagement_false if {
 	not purchaseManagement with dataProduct as {}
 }
 
-test_purchaseManagement_enabled {
+test_purchaseManagement_enabled if {
 	purchaseManagement with dataProduct as {
 		"version": "1",
 		"sub_version": "2",
 		"money_available": 100,
 	}
-		with input.userId as "001"
 }
 
-test_purchaseManagement_disabled {
+test_purchaseManagement_disabled if {
 	not purchaseManagement with dataProduct as {
 		"version": "1",
 		"sub_version": "2",
 		"money_available": 0,
 	}
-		with input.userId as "001"
 }

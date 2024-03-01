@@ -1,18 +1,19 @@
 package entitlements
+import rego.v1
 
 import data.rules.platforms as platforms_rules
 
-hasNewPlatform = "newPlatform" {
-	attributes = getUserProduct(input.userId)
+hasNewPlatform = "newPlatform" if {
+	attributes = input.product
 	x := fullVersion(attributes)
-	trace(x)
-	x = platforms_rules.newPlatform.product.fullVersion[_]
+	# trace(x)
+	platforms_rules.newPlatform.product.fullVersion[_] = x
 }
 
-hasOldPlatform = "oldPlatform" {
-	attributes = getUserProduct(input.userId)
+hasOldPlatform := "oldPlatform" if {
+	attributes = input.product
 	x := fullVersion(attributes)
-	x = platforms_rules.oldPlatform.product.fullVersion[_]
+	platforms_rules.oldPlatform.product.fullVersion[_] =x
 }
 
 platforms = array.concat([x | x := hasOldPlatform; x], [x | x := hasNewPlatform; x])
