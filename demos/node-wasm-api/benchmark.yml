@@ -1,0 +1,12 @@
+---
+concurrency: 1000
+base: "http://localhost:3001"
+iterations: 10000
+# rampup: 2
+
+plan:
+  - name: Entitlement wasm request
+    request:
+      url: /entitlements
+    tags:
+      - entitlements-wasm

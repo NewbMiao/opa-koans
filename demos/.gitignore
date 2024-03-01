@@ -2,3 +2,9 @@ bundle.tar.gz
 *.wasm
 /node_modules
 /rs-opa
+entitlements/rules.yaml
+go-rego/.go-cache
+dist
+node-api/data.json
+node-wasm-api/data.json
+go-rego/data.json

@@ -1,0 +1,12 @@
+---
+concurrency: 300
+base: "http://localhost:3000"
+iterations: 10000
+# rampup: 2
+
+plan:
+  - name: Entitlement request
+    request:
+      url: /entitlements
+    tags:
+      - entitlements
