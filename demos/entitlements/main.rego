@@ -1,11 +1,13 @@
 package entitlements
+
 import rego.v1
 
 main := {
-		"platforms": {"platforms": platforms},
-		"orderManagement": {"enabled": orderManagement},
-		"purchaseManagement": {"enabled": purchaseManagement},
-	}
+	"platforms": {"platforms": platforms},
+	"orderManagement": {"enabled": orderManagement},
+	"purchaseManagement": {"enabled": purchaseManagement},
+}
+
 # run
 # opa eval -f values -d . -i input.json "data.entitlements.main"
 # profile

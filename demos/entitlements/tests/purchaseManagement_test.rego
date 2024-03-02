@@ -1,8 +1,8 @@
 package entitlements_test
 
-import rego.v1
 import data.entitlements.purchaseManagement
 import input.product as dataProduct
+import rego.v1
 
 test_purchaseManagement_false if {
 	not purchaseManagement with dataProduct as {}

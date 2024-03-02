@@ -1,4 +1,5 @@
 package entitlements_test
+
 import rego.v1
 
 import data.entitlements.main

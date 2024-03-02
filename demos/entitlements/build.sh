@@ -6,7 +6,7 @@ echo "bundleType: $bundleType"
 {
     cd "$workspace" || exit
 
-    find . -type f -name '*.yaml' | xargs cat >rules.yaml
+    find . -type f -name '*.yaml' -print0 | xargs -0 cat >rules.yaml
     combined_json=$(yq eval-all '. | tojson' rules.yaml)
     echo "{\"rules\": $combined_json}" >data.json
 
