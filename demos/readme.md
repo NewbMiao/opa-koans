@@ -2,20 +2,22 @@
 
 Demo to show how to build policy with decoupling rules (data) and policy
 
+Details in [here](https://slides.com/newbmiao/building-api-with-opa)
+
 ## use opa cli
 
 ```sh
 cd entitlemnts
 # run
-opa eval -f values -d . -i input.json "data.entitlements.main"
+opa eval -f values -b . -i input.json "data.entitlements.main"
 # profile peformance
-opa eval --profile -f pretty -d . -i input.json "data.entitlements.main"
+opa eval --profile -f pretty -b . -i input.json "data.entitlements.main"
 
 # test with coverage
-opa test . -c --threshold 100
+opa test . -c --threshold 100 -b 
 
 # test with ensure coverage 100%, fail if not
-opa test . -c --threshold 100 -v
+opa test . -c --threshold 100 -b -v
 # test with bench
 opa test -v --bench --count 1 .
 ```
