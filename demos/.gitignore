@@ -8,3 +8,4 @@ dist
 node-api/data.json
 node-wasm-api/data.json
 go-rego/data.json
+entitlements/output
