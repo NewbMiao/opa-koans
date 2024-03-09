@@ -4,7 +4,7 @@ workspace=$(cd "$(dirname "$0")" && pwd -P)
 
 {
     echo "start build opa bundle ... # format: rego"
-    cd "$workspace" || exit
+    cd "$workspace/.." || exit
     opa  build -b . -o entitlements-raw.tar.gz -t rego
     echo "entitlements files bundled!"
     opa  build -b . -o entitlements-optmized.tar.gz -O 1 -e entitlements/main -t rego

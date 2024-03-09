@@ -1,0 +1,16 @@
+---
+concurrency: 1000
+base: "http://localhost:8181"
+iterations: 10000
+# rampup: 2
+
+plan:
+  - name: Entitlement opa request
+    request:
+      url: /v1/data/entitlements/main
+      method: POST
+      headers:
+        Content-Type: 'application/json'
+      body: '{"input": {"product": {"version": "1","sub_version": "3","money_available": 100}}}'
+    tags:
+      - entitlements-opa
