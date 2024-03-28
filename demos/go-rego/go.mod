@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/gorilla/mux v1.8.1
-	github.com/open-policy-agent/opa v0.62.1
+	github.com/open-policy-agent/opa v0.63.0
 )
 
 require (
@@ -33,7 +33,7 @@ require (
 	go.opentelemetry.io/otel/sdk v1.21.0 // indirect
 	go.opentelemetry.io/otel/trace v1.21.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
-	google.golang.org/protobuf v1.32.0 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
