@@ -6,7 +6,7 @@ toolchain go1.22.2
 
 require (
 	github.com/gorilla/mux v1.8.1
-	github.com/open-policy-agent/opa v0.64.0
+	github.com/open-policy-agent/opa v0.64.1
 )
 
 require (
