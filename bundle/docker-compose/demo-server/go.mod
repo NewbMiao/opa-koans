@@ -6,7 +6,7 @@ toolchain go1.22.2
 
 require (
 	github.com/gorilla/mux v1.8.1
-	github.com/open-policy-agent/opa v0.64.0
+	github.com/open-policy-agent/opa v0.64.1
 )
 
 require (
@@ -19,7 +19,7 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/matttproud/golang_protobuf_extensions/v2 v2.0.0 // indirect
+	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/prometheus/client_golang v1.19.0 // indirect
 	github.com/prometheus/client_model v0.6.1 // indirect
 	github.com/prometheus/common v0.48.0 // indirect
