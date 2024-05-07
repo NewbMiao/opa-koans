@@ -1,4 +1,4 @@
-FROM golang:1.22.2-alpine as base
+FROM golang:1.22.3-alpine as base
 
 ENV GOPROXY https://goproxy.cn,direct
 WORKDIR /code
