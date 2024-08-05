@@ -74,6 +74,8 @@ github.com/open-policy-agent/opa v0.66.0 h1:DbrvfJQja0FBRcPOB3Z/BOckocN+M4ApNWyN
 github.com/open-policy-agent/opa v0.66.0/go.mod h1:EIgNnJcol7AvQR/IcWLwL13k64gHVbNAVG46b2G+/EY=
 github.com/open-policy-agent/opa v0.67.0 h1:FOdsO9yNhfmrh+72oVK7ImWmzruG+VSpfbr5IBqEWVs=
 github.com/open-policy-agent/opa v0.67.0/go.mod h1:aqKlHc8E2VAAylYE9x09zJYr/fYzGX+JKne89UGqFzk=
+github.com/open-policy-agent/opa v0.67.1 h1:rzy26J6g1X+CKknAcx0Vfbt41KqjuSzx4E0A8DAZf3E=
+github.com/open-policy-agent/opa v0.67.1/go.mod h1:aqKlHc8E2VAAylYE9x09zJYr/fYzGX+JKne89UGqFzk=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
