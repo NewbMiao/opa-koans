@@ -1,4 +1,4 @@
-FROM node:20-bullseye-slim AS build
+FROM node:22-bullseye-slim AS build
 WORKDIR /app
 COPY package.json /app/
 RUN npm install --prefer-offline --frozen-lockfile
