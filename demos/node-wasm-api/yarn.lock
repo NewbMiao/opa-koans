@@ -866,9 +866,9 @@
     node-fetch "^2.6.1"
 
 "@open-policy-agent/opa-wasm@^1.8.1":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@open-policy-agent/opa-wasm/-/opa-wasm-1.9.0.tgz#3727af1d833319174c15971ba3bb25c263cd517c"
-  integrity sha512-wuxQYoqU80ulYdFtZ1BKaFs29IRZZV3hl48L4wMRxXFlEoLBDfl5rL8iBNIyp+DDymvDxGS4ZMRVaBBWXnPYLQ==
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@open-policy-agent/opa-wasm/-/opa-wasm-1.10.0.tgz#3ba9cdfbb810fbddc896da6158151e2917dbeee2"
+  integrity sha512-ymR/nFS3nO9o24j9xowGGQaf+Gmb813QcxUpVZkfRlJkawKWqSIllnEH15agyWjijmOIyhA+OBErenx6N3jphw==
   dependencies:
     sprintf-js "^1.1.2"
     yaml "^1.10.2"
