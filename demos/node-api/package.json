@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
-    "@nestjs/core": "^10.0.0",
+    "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "fs": "^0.0.1-security",
     "reflect-metadata": "^0.2.0",
